@@ -1,0 +1,52 @@
+{
+    "anims": [
+        {
+            "key": "rotate",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 10,
+            "frames": [
+                {
+                    "key": "coin",
+                    "frame": "gold_21"
+                },
+                {
+                    "key": "coin",
+                    "frame": "gold_22"
+                },
+                {
+                    "key": "coin",
+                    "frame": "gold_23"
+                },
+                {
+                    "key": "coin",
+                    "frame": "gold_24"
+                },
+                {
+                    "key": "coin",
+                    "frame": "gold_25"
+                },
+                {
+                    "key": "coin",
+                    "frame": "gold_26"
+                },
+                {
+                    "key": "coin",
+                    "frame": "gold_27"
+                },
+                {
+                    "key": "coin",
+                    "frame": "gold_28"
+                },
+                {
+                    "key": "coin",
+                    "frame": "gold_29"
+                },
+                {
+                    "key": "coin",
+                    "frame": "gold_30"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,256 @@
+{
+    "anims": [
+        {
+            "key": "hurt",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_hurt_000"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_hurt_001"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_hurt_002"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_hurt_003"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_hurt_004"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_hurt_005"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_hurt_006"
+                }
+            ]
+        },
+        {
+            "key": "attack",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_attack_000"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_attack_001"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_attack_002"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_attack_003"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_attack_004"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_attack_005"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_attack_006"
+                }
+            ]
+        },
+        {
+            "key": "idle3",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_idle_000"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_idle_001"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_idle_002"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_idle_003"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_idle_004"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_idle_005"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_idle_006"
+                }
+            ]
+        },
+        {
+            "key": "jump",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_jump_000"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_jump_001"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_jump_002"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_jump_003"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_jump_004"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_jump_005"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_jump_006"
+                }
+            ]
+        },
+        {
+            "key": "run",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_run_000"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_run_001"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_run_002"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_run_003"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_run_004"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_run_005"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_run_006"
+                }
+            ]
+        },
+        {
+            "key": "walk3",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_walk_000"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_walk_001"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_walk_002"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_walk_003"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_walk_004"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_walk_005"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_walk_006"
+                }
+            ]
+        },
+        {
+            "key": "die",
+            "type": "frames",
+            "repeat": 0,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_die_000"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_die_001"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_die_002"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_die_003"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_die_004"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_die_005"
+                },
+                {
+                    "key": "pirata_3",
+                    "frame": "3_3-pirate_die_006"
+                }
+            ]
+        }
+    ]
+}
