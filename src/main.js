@@ -1,4 +1,12 @@
 import Bootloader from './Bootloader.js'
+import Levels from './scenes/Levels.js'
+import Hanoi from './scenes/Hanoi.js'
+import Puzzle from './scenes/Puzzle.js'
+import Maze from './scenes/Maze.js'
+import Square from './scenes/Square.js'
+import Four from './scenes/Four.js'
+import Riddle from './scenes/Riddle.js'
+import SliderPlugin from '../node_modules/phaser3-rex-plugins/plugins/slider-plugin.js'
 
 const config = {
     title: "Math Adventure", //Nombre del juego (opcional)
