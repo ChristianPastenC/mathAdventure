@@ -86,6 +86,7 @@ class Puzzle extends Phaser.Scene {
                 this.black.y = obj.input.dragStartY;
                 this.move(name,namebk);
                 if(this.isCompleted()){
+                    console.log('ganas 8 puzzle');
                     this.win();
                 }
             }else{
@@ -299,15 +300,19 @@ class Puzzle extends Phaser.Scene {
     // Muestra mensaje ganador y regresa a la escena de islas
     // ============================================================================
     win(){
-        let auxTxt = this.add.text(this.scale.width/2+20,this.scale.height/2,'+3',{font: "35px MiTica", fill:"#000000"});
-        let auxCoin = this.add.sprite(this.scale.width/2,this.scale.height/2,'coin');
+        let auxRect = this.add.rectangle(this.scale.width/2,this.scale.height/2,this.scale.width,this.scale.height,0x000000,.75).setVisible(false).setDepth(3);
+        let winTxt  = this.add.text(this.scale.width/2-150,this.scale.height/2,'Ganaste..!',{font: "70px MiTica", fill:"#ffffff"}).setVisible(false).setDepth(3);
+        let auxTxt  = this.add.text(this.scale.width/2+20,this.scale.height/2,'+3',{font: "35px MiTica", fill:"#ffffff"}).setVisible(false).setDepth(3);
+        let auxCoin = this.add.sprite(this.scale.width/2,this.scale.height/2,'coin').setVisible(false).setDepth(3);
         this.nCoin += 3;
         this.add.tween({
-            targets: [auxCoin, auxTxt],
-            duration: 3000,
-            x: 500,
-            y: 0,
-            alpha: 0,
+            targets: [winTxt], duration: 1000, alpha: 0,
+            onInit: (tween, obj, target) => { auxRect.setVisible(true); winTxt.setVisible(true); },
+        });
+        this.add.tween({
+            targets: [auxCoin, auxTxt], delay: 1200,
+            duration: 2000, x: 500, y: 0, alpha: 0,
+            onInit: (tween, obj, target) => { auxTxt.setVisible(true); auxCoin.setVisible(true); },
             onComplete: (tween, obj, target) => {
                 this.scene.start('Levels', {
                     personaje: this.personajeAct,
