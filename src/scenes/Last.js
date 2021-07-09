@@ -52,6 +52,22 @@ class Hanoi extends Phaser.Scene {
         this.txtCoin = this.add.text(470,0,this.nCoin,{font: "35px MiTica", fill:"#000000"}).setInteractive();
         this.coin    = this.add.sprite(540,20,'coin').setScale(.5);
         this.authomaticTweens();
+        // Información del juego
+        this.container8 = this.add.container(this.scale.width/2,this.scale.height/2).setDepth(1);
+        this.modal8 = this.add.image(0,0,'modal');
+        this.closeModal8 = this.add.image(270,-130,'btnClose').setScale(0.75).setInteractive();
+        this.infoText8 = this.add.text(-320, -100, 
+                        '\n     En esta isla se realiza la repartición de un tesoro, de un\n'+
+                        '       total de 35 monedas, el primer pirata debe recibir la\n'+
+                        '         mitad, el segundo una tercera parte y el último la \n'+
+                        '          novena parte del total. Ayuda a los tres piratas\n'+
+                        '              a saber cuantas monedas recibirá cada uno.\n'+
+                        '                Pista: Usa las monedas que has ganado.',
+                        {font: "25px MiTica", fill:"#000000"});
+        this.container8.add([
+            this.modal8, this.closeModal8, this.infoText8,
+        ]);
+        this.container8.setVisible(false);
         // ============================================================================
         // Elementos Jugables
         // ============================================================================
@@ -123,7 +139,11 @@ class Hanoi extends Phaser.Scene {
         //Boton de ayuda
         this.btnInfo.on('pointerover', () => { this.btnInfo.setScale(0.8); });
         this.btnInfo.on('pointerout',  () => { this.btnInfo.setScale(0.7); });
-        this.btnInfo.on('pointerup',   () => {  });
+        this.btnInfo.on('pointerup',   () => { this.container8.setVisible(true); });
+        //Boton que cierra el modal
+        this.closeModal8.on('pointerover', () => { this.closeModal8.setScale(0.8); });
+        this.closeModal8.on('pointerout', () => { this.closeModal8.setScale(0.75); });
+        this.closeModal8.on('pointerup', () => { this.container8.setVisible(false); });
         //***** Botones que disminuyen *****//
         this.btnDownA.on('pointerover', () => { this.btnDownA.setScale(.75); });
         this.btnDownA.on('pointerout',  () => { this.btnDownA.setScale(.70); });
@@ -174,7 +194,6 @@ class Hanoi extends Phaser.Scene {
                 this.txtC.text = '0'+this.C.toString();
             this.checkResult();
         });
-
     }
 
     update(time, delta){
@@ -244,6 +263,5 @@ class Hanoi extends Phaser.Scene {
             this.winner(true) :
             this.winner(false);
     }
-
 }
 export default Hanoi;

@@ -292,7 +292,7 @@ class Bootloader extends Phaser.Scene {
         this.btnPlay.on('pointerout', () => {   this.btnPlay.setScale(1.5); });
         this.btnPlay.on('pointerup', () => {
             console.log('Press Play');
-            this.scene.start('Last', {
+            this.scene.start('Levels', {
                 personaje: this.character,
                 monedas: this.nCoin,
                 comprados: this.store,

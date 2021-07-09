@@ -331,16 +331,25 @@ class Levels extends Phaser.Scene {
         // Modal Nivel Ocho
         this.container8 = this.add.container(this.scale.width/2,this.scale.height/2);
         this.modal8 = this.add.image(0,0,'modal');
-        this.closeModal8 = this.add.image(250,-120,'btnClose').setInteractive();
-        this.init8 = this.add.image(0,100,'btnInit').setInteractive();
+        this.closeModal8 = this.add.image(270,-130,'btnClose').setScale(0.75).setInteractive();
+        this.init8 = this.add.image(0,120,'btnInit').setInteractive();
+        this.infoText8 = this.add.text(-320, -100, 
+                        '    En esta isla se realiza la repartición de un tesoro, de un\n'+
+                        '       total de 35 monedas, el primer pirata debe recibir la\n'+
+                        '         mitad, el segundo una tercera parte y el último la \n'+
+                        '          novena parte del total. Ayuda a los tres piratas\n'+
+                        '              a saber cuantas monedas recibirá cada uno.\n'+
+                        '                Pista: Usa las monedas que has ganado.',
+                        {font: "25px MiTica", fill:"#000000"});
         this.container8.add([
-            this.modal8, this.closeModal8, this.init8,
+            this.modal8, this.closeModal8, this.init8, this.infoText8,
         ]);
         this.container8.setVisible(false);
         this.modal8.setScrollFactor(0);
         this.closeModal8.setScrollFactor(0);
         this.init8.setScrollFactor(0);
         this.container8.setScrollFactor(0);
+        this.infoText8.setScrollFactor(0);
         // ============================================================================
         //  Función de botones en modales
         // ============================================================================
@@ -506,10 +515,10 @@ class Levels extends Phaser.Scene {
 
         // Modal Nivel Ocho
         this.closeModal8.on('pointerover', () => {
-            this.closeModal8.setScale(1.1);
+            this.closeModal8.setScale(.8);
         });
         this.closeModal8.on('pointerout', () => {
-            this.closeModal8.setScale(1);
+            this.closeModal8.setScale(.75);
         });
         this.closeModal8.on('pointerup', () => {
             this.container8.setVisible(false);
@@ -524,6 +533,11 @@ class Levels extends Phaser.Scene {
         });
         this.init8.on('pointerup', () => {
             console.log('Inicia Nivel 8');
+            this.scene.start('Last', {
+                personaje: this.personajeAct,
+                monedas: this.nCoin,
+                comprados: this.store,
+            });
         });
     }
 
