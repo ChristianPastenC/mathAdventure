@@ -99,7 +99,11 @@ class Levels extends Phaser.Scene {
         //Movimiento hacia arriba
         this.btnUp.on('pointerover', () => {
             this.btnUp.setScale(0.9);
-            this.upPressed = false;
+            this.upPressed = true;
+            this.shipDown.setVisible(false);
+            this.shipLeft.setVisible(false);
+            this.shipRight.setVisible(false);
+            this.shipUp.setVisible(true);
         });
         this.btnUp.on('pointerout', () => {
             this.btnUp.setScale(0.8);
@@ -115,7 +119,11 @@ class Levels extends Phaser.Scene {
         //Movimiento hacia abajo
         this.btnDown.on('pointerover', () => {
             this.btnDown.setScale(0.9);
-            this.downPressed = false;
+            this.downPressed = true;
+            this.shipDown.setVisible(true);
+            this.shipLeft.setVisible(false);
+            this.shipRight.setVisible(false);
+            this.shipUp.setVisible(false);
         });
         this.btnDown.on('pointerout', () => {
             this.btnDown.setScale(0.8);
@@ -131,7 +139,11 @@ class Levels extends Phaser.Scene {
         //Movimiento a la Izquierda
         this.btnLeft.on('pointerover', () => {
             this.btnLeft.setScale(0.9);
-            this.leftPressed = false;
+            this.leftPressed = true;
+            this.shipDown.setVisible(false);
+            this.shipLeft.setVisible(true);
+            this.shipRight.setVisible(false);
+            this.shipUp.setVisible(false);
         });
         this.btnLeft.on('pointerout', () => {
             this.btnLeft.setScale(0.8);
@@ -147,7 +159,11 @@ class Levels extends Phaser.Scene {
         //Movimiento a la Derecha
         this.btnRight.on('pointerover', () => {
             this.btnRight.setScale(0.9);
-            this.rightPressed = false;
+            this.rightPressed = true;
+            this.shipDown.setVisible(false);
+            this.shipLeft.setVisible(false);
+            this.shipRight.setVisible(true);
+            this.shipUp.setVisible(false);
         });
         this.btnRight.on('pointerout', () => {
             this.btnRight.setScale(0.8);
@@ -545,32 +561,32 @@ class Levels extends Phaser.Scene {
         this.water.tilePositionX += .75;
         
         if(this.downPressed == true && this.shipDown.y <= 360){
-            this.ship.y += 5.5;
-            this.shipDown.y += 5.5;
-            this.shipLeft.y += 5.5;
-            this.shipRight.y += 5.5;
-            this.shipUp.y += 5.5;
+            this.ship.y += 2.5;
+            this.shipDown.y += 2.5;
+            this.shipLeft.y += 2.5;
+            this.shipRight.y += 2.5;
+            this.shipUp.y += 2.5;
         }
         if(this.leftPressed == true && this.shipLeft.x >= 100){
-            this.ship.x -= 5.5;
-            this.shipDown.x -= 5.5;
-            this.shipLeft.x -= 5.5;
-            this.shipRight.x -= 5.5;
-            this.shipUp.x -= 5.5;
+            this.ship.x -= 2.5;
+            this.shipDown.x -= 2.5;
+            this.shipLeft.x -= 2.5;
+            this.shipRight.x -= 2.5;
+            this.shipUp.x -= 2.5;
         }
         if(this.rightPressed == true && this.shipRight.x <= 3450){
-            this.ship.x += 5.5;
-            this.shipDown.x += 5.5;
-            this.shipLeft.x += 5.5;
-            this.shipRight.x += 5.5;
-            this.shipUp.x += 5.5;
+            this.ship.x += 2.5;
+            this.shipDown.x += 2.5;
+            this.shipLeft.x += 2.5;
+            this.shipRight.x += 2.5;
+            this.shipUp.x += 2.5;
         }
         if(this.upPressed == true && this.shipUp.y >= 50){
-            this.ship.y -= 5.5;
-            this.shipDown.y -= 5.5;
-            this.shipLeft.y -= 5.5;            
-            this.shipRight.y -= 5.5;
-            this.shipUp.y -= 5.5;
+            this.ship.y -= 2.5;
+            this.shipDown.y -= 2.5;
+            this.shipLeft.y -= 2.5;            
+            this.shipRight.y -= 2.5;
+            this.shipUp.y -= 2.5;
         }
     }
     // ============================================================================

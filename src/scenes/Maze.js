@@ -110,19 +110,19 @@ class Maze extends Phaser.Scene {
         // Función de botones principales
         // ============================================================================
         //Movimiento hacia arriba
-        this.btnUp.on('pointerover', () => { this.btnUp.setScale(0.9); this.upPressed = false; });
+        this.btnUp.on('pointerover', () => { this.btnUp.setScale(0.9); this.upPressed = true; });
         this.btnUp.on('pointerout', () => { this.btnUp.setScale(0.8); this.upPressed = false; });
         this.btnUp.on('pointerup', () => { this.upPressed = true; });
         //Movimiento hacia abajo
-        this.btnDown.on('pointerover', () => { this.btnDown.setScale(0.9); this.downPressed = false; });
+        this.btnDown.on('pointerover', () => { this.btnDown.setScale(0.9); this.downPressed = true; });
         this.btnDown.on('pointerout', () => { this.btnDown.setScale(0.8); this.downPressed = false; });
         this.btnDown.on('pointerup', () => { this.downPressed = true; });
         //Movimiento a la Izquierda
-        this.btnLeft.on('pointerover', () => { this.btnLeft.setScale(0.9); this.leftPressed = false; });
+        this.btnLeft.on('pointerover', () => { this.btnLeft.setScale(0.9); this.leftPressed = true; });
         this.btnLeft.on('pointerout', () => { this.btnLeft.setScale(0.8); this.leftPressed = false; });
         this.btnLeft.on('pointerup', () => { this.leftPressed = true; });
         //Movimiento a la Derecha
-        this.btnRight.on('pointerover', () => { this.btnRight.setScale(0.9); this.rightPressed = false; });
+        this.btnRight.on('pointerover', () => { this.btnRight.setScale(0.9); this.rightPressed = true; });
         this.btnRight.on('pointerout', () => { this.btnRight.setScale(0.8); this.rightPressed = false; });
         this.btnRight.on('pointerup', () => { this.rightPressed = true; });
         // ============================================================================
