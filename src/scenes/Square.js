@@ -1,13 +1,6 @@
-class Square extends Phaser.Scene {
-    
-    constructor(){
-        super({
-            key: 'Square'
-        });
-    }
-
+class Square extends Phaser.Scene {    
+    constructor(){ super({ key: 'Square' }); }
     init(data){
-        console.log('Magic Square Scene');
         // ============================================================================
         // Personaje seleccionado como parametro y monedas
         // ============================================================================
@@ -63,15 +56,8 @@ class Square extends Phaser.Scene {
         // Eventos Drag & Drop (Funciones Puzzle)
         // ============================================================================
         const eventos = Phaser.Input.Events;
-        
-        this.input.on(eventos.DRAG_START, (pointer, obj, dragX, dragY) => {
-            obj.setScale(0.9);
-        });
-
-        this.input.on(eventos.DRAG, (pointer,obj,dragX,dragY)=>{
-            obj.x = dragX;
-            obj.y = dragY;
-        });
+        this.input.on(eventos.DRAG_START, (pointer, obj, dragX, dragY) => { obj.setScale(0.9); });
+        this.input.on(eventos.DRAG, (pointer,obj,dragX,dragY)=>{ obj.x = dragX; obj.y = dragY; });
         this.input.on(eventos.DRAG_END, (pointer, obj, dropzone) => {
             if ( !dropzone ) {
                 obj.x = obj.input.dragStartX;
@@ -113,24 +99,16 @@ class Square extends Phaser.Scene {
         // Función de botones
         // ============================================================================
         //Boton de reinicio
-        this.btnRestart.on('pointerover', () => {
-            this.btnRestart.setScale(0.8);
-        });
-        this.btnRestart.on('pointerout', () => {
-            this.btnRestart.setScale(0.7);
-        });
-        this.btnRestart.on('pointerup', () => {
+        this.btnRestart.on('pointerover', () => { this.btnRestart.setScale(0.8); });
+        this.btnRestart.on('pointerout',  () => { this.btnRestart.setScale(0.7); });
+        this.btnRestart.on('pointerup',   () => {
             this.ini = [16,3,0,0,5,0,11,0,9,6,0,12,0,15,0,1];
             this.clean();
             this.magicSquare();
         });
         //Boton de salida
-        this.btnExit.on('pointerover', () => {
-            this.btnExit.setScale(0.8);
-        });
-        this.btnExit.on('pointerout', () => {
-            this.btnExit.setScale(0.7);
-        });
+        this.btnExit.on('pointerover', () => { this.btnExit.setScale(0.8); });
+        this.btnExit.on('pointerout',  () => { this.btnExit.setScale(0.7); });
         this.btnExit.on('pointerup', () => {
             this.scene.start('Levels', {
                 personaje: this.personajeAct,
@@ -139,36 +117,20 @@ class Square extends Phaser.Scene {
             });
         });
         //Boton de ayuda
-        this.btnInfo.on('pointerover', () => {
-            this.btnInfo.setScale(0.8);
-        });
-        this.btnInfo.on('pointerout', () => {
-            this.btnInfo.setScale(0.7);
-        });
-        this.btnInfo.on('pointerup', () => {
-            this.container4.setVisible(true);
-        });
+        this.btnInfo.on('pointerover', () => { this.btnInfo.setScale(0.8); });
+        this.btnInfo.on('pointerout',  () => { this.btnInfo.setScale(0.7); });
+        this.btnInfo.on('pointerup',   () => { this.container4.setVisible(true); });
         //Boton que cierra el modal
-        this.closeModal4.on('pointerover', () => {
-            this.closeModal4.setScale(0.8);
-        });
-        this.closeModal4.on('pointerout', () => {
-            this.closeModal4.setScale(0.75);
-        });
-        this.closeModal4.on('pointerup', () => {
-            this.container4.setVisible(false);
-        });
-    }
-    update(time, delta){
-
+        this.closeModal4.on('pointerover', () => { this.closeModal4.setScale(0.80); });
+        this.closeModal4.on('pointerout',  () => { this.closeModal4.setScale(0.75); });
+        this.closeModal4.on('pointerup',   () => { this.container4.setVisible(false); });
     }
     // ============================================================================
     // Función que agrega interpolaciones al personaje mostrado
     // ============================================================================
     authomaticTweens(){
         this.add.tween({
-            targets: [this.personaje],
-            loop: -1,
+            targets: [this.personaje], loop: -1,
             onStart: (tween, obj, target) => {
                 if(this.personajeAct == 'pirata_1'){
                     obj[0].anims.play('idle', true);
@@ -180,11 +142,8 @@ class Square extends Phaser.Scene {
             },
         });
         this.add.tween({
-            targets: [this.coin],
-            loop: -1,
-            onStart: (tween, obj, target) => {
-                obj[0].anims.play('rotate',true);
-            },
+            targets: [this.coin], loop: -1,
+            onStart: (tween, obj, target) => { obj[0].anims.play('rotate',true); },
         });
     }
     // ============================================================================
@@ -234,19 +193,13 @@ class Square extends Phaser.Scene {
             this.pieces[i] = this.aux;
             //actualizar posiciones
             posX += 140;
-            if((i+1)%4 == 0){
-                posY += 72;
-                posX = 300;
-            }   
+            if((i+1)%4 == 0){ posY += 72; posX = 300; }   
         }
     }
     // ============================================================================
     // Mueve la pieza de manera lógica
     // ============================================================================
-    move(piece,drop){
-        drop -= 1;
-        this.ini[drop] = piece;
-    }
+    move(piece,drop){ drop -= 1; this.ini[drop] = piece; }
     // ============================================================================
     // Determina si el cuadro mágio está completo 
     // ============================================================================
@@ -265,9 +218,7 @@ class Square extends Phaser.Scene {
     // ============================================================================
     clean(){
         if(this.pieces.length != 0){
-            for(var i=0; i<this.pieces.length;i++){
-                this.pieces[i].destroy();
-            }
+            for(var i=0; i<this.pieces.length;i++){ this.pieces[i].destroy(); }
         }
     }
     // ============================================================================

@@ -1,13 +1,7 @@
-class Hanoi extends Phaser.Scene {
-    
-    constructor(){
-        super({
-            key: "Hanoi"
-        });
-    }
+class Hanoi extends Phaser.Scene {    
+    constructor(){ super({ key: "Hanoi" }); }
 
     init(data){
-        console.log('Hanoi Towers Scene');
         // ============================================================================
         // Personaje seleccionado como parametro
         // ============================================================================
@@ -87,10 +81,7 @@ class Hanoi extends Phaser.Scene {
         // ============================================================================
         const eventos = Phaser.Input.Events;
         
-        this.input.on(eventos.DRAG, (pointer,obj,dragX,dragY)=>{
-            obj.x = dragX;
-            obj.y = dragY;
-        });
+        this.input.on(eventos.DRAG, (pointer,obj,dragX,dragY)=>{ obj.x = dragX; obj.y = dragY; });
 
         this.input.on(eventos.DRAG_END, (pointer, obj, dropzone) => {  
             if ( !dropzone || this.isHead(obj.name) == false || this.canMove(obj.name,this.auxDestino) == false) {
@@ -118,23 +109,13 @@ class Hanoi extends Phaser.Scene {
         // Función de botones
         // ============================================================================
         //Boton de reinicio
-        this.btnRestart.on('pointerover', () => {
-            this.btnRestart.setScale(0.8);
-        });
-        this.btnRestart.on('pointerout', () => {
-            this.btnRestart.setScale(0.7);
-        });
-        this.btnRestart.on('pointerup', () => {
-            this.initialStatus();
-        });
+        this.btnRestart.on('pointerover', () => { this.btnRestart.setScale(0.8); });
+        this.btnRestart.on('pointerout',  () => { this.btnRestart.setScale(0.7); });
+        this.btnRestart.on('pointerup',   () => { this.initialStatus(); });
         //Boton de salida
-        this.btnExit.on('pointerover', () => {
-            this.btnExit.setScale(0.8);
-        });
-        this.btnExit.on('pointerout', () => {
-            this.btnExit.setScale(0.7);
-        });
-        this.btnExit.on('pointerup', () => {
+        this.btnExit.on('pointerover', () => { this.btnExit.setScale(0.8); });
+        this.btnExit.on('pointerout',  () => { this.btnExit.setScale(0.7); });
+        this.btnExit.on('pointerup',   () => {
             this.scene.start('Levels', {
                 personaje: this.personajeAct,
                 monedas: this.nCoin,
@@ -142,37 +123,21 @@ class Hanoi extends Phaser.Scene {
             });
         });
         //Boton de ayuda
-        this.btnInfo.on('pointerover', () => {
-            this.btnInfo.setScale(0.8);
-        });
-        this.btnInfo.on('pointerout', () => {
-            this.btnInfo.setScale(0.7);
-        });
-        this.btnInfo.on('pointerup', () => {
-            this.container5.setVisible(true);
-        });
+        this.btnInfo.on('pointerover', () => { this.btnInfo.setScale(0.8); });
+        this.btnInfo.on('pointerout',  () => { this.btnInfo.setScale(0.7); });
+        this.btnInfo.on('pointerup',   () => { this.container5.setVisible(true); });
         //Boton que cierra el modal
-        this.closeModal5.on('pointerover', () => {
-            this.closeModal5.setScale(0.8);
-        });
-        this.closeModal5.on('pointerout', () => {
-            this.closeModal5.setScale(0.75);
-        });
-        this.closeModal5.on('pointerup', () => {
-            this.container5.setVisible(false);
-        });
+        this.closeModal5.on('pointerover', () => { this.closeModal5.setScale(0.8); });
+        this.closeModal5.on('pointerout',  () => { this.closeModal5.setScale(0.75); });
+        this.closeModal5.on('pointerup',   () => { this.container5.setVisible(false); });
     }
 
-    update(time, delta){
-    
-    }
     // ============================================================================
     // Función que agrega interpolaciones al personaje mostrado
     // ============================================================================
     authomaticTweens(){
         this.add.tween({
-            targets: [this.personaje],
-            loop: -1,
+            targets: [this.personaje], loop: -1,
             onStart: (tween, obj, target) => {
                 if(this.personajeAct == 'pirata_1'){
                     obj[0].anims.play('idle', true);
@@ -184,11 +149,8 @@ class Hanoi extends Phaser.Scene {
             },
         });
         this.add.tween({
-            targets: [this.coin],
-            loop: -1,
-            onStart: (tween, obj, target) => {
-                obj[0].anims.play('rotate',true);
-            },
+            targets: [this.coin], loop: -1,
+            onStart: (tween, obj, target) => { obj[0].anims.play('rotate',true); },
         });
     }
     // ============================================================================
@@ -216,15 +178,9 @@ class Hanoi extends Phaser.Scene {
     // se asegura que solo sea movible el head de la torre
     // ============================================================================
     isHead(piece){
-        var res = false;
-        if(piece === this.inicio[0] || piece === this.auxiliar[0] || piece === this.destino[0]){
-            res = true;
-        }else{
-            console.log('No es Head');
-            console.log('Array A: ' + this.inicio);
-            console.log('Array B: ' + this.auxiliar);
-            console.log('Array C: ' + this.destino);
-        }
+        var res;
+        piece === this.inicio[0] || piece === this.auxiliar[0] ||
+         piece === this.destino[0] ? res = true : res = false;
     return res;
     }
     // ============================================================================
@@ -246,26 +202,14 @@ class Hanoi extends Phaser.Scene {
     // que la torre esté vacía o que no existan piezas menores debajo
     // ============================================================================
     canMove(piece,tower){
-        var res = false;
+        var res;
         if(tower == 'torreA'){
-            if(piece < this.inicio[0] || !this.inicio.length){
-                res = true;
-            }else{
-                console.log('No Moving');
-            }
+            piece < this.inicio[0] || !this.inicio.length ? res = true : res = false;
         }else if(tower == 'torreB'){
-             if(piece < this.auxiliar[0] || !this.auxiliar.length){
-                res = true;
-            }else{
-                console.log('No Moving');
-            }
+            piece < this.auxiliar[0] || !this.auxiliar.length ? res = true : res = false;
             
         }else if(tower == 'torreC'){
-            if(piece < this.destino[0] || !this.destino.length){
-                res = true;
-            }else{
-                console.log('No Moving');
-            }
+            piece < this.destino[0] || !this.destino.length ? res = true : res = false;
         }
     return res;
     }
@@ -275,11 +219,9 @@ class Hanoi extends Phaser.Scene {
     hanoiWin(){
         var auxArray = ['1','2','3','4'];
         var res = this.destino.length == auxArray.length 
-                  && this.destino.every(
-                        function(v,i)
-                        { 
-                            return v === auxArray[i]
-                        } ) ? true : false;
+                  && this.destino.every( function(v,i)
+                    {  return v === auxArray[i] })
+                    ? true : false;
     return res;
     }
     // ============================================================================
@@ -327,5 +269,4 @@ class Hanoi extends Phaser.Scene {
         this.pieceD.setPosition(225,335);
     }
 }
-
 export default Hanoi;

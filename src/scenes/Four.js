@@ -1,11 +1,6 @@
 class Four extends Phaser.Scene {    
-    constructor(){
-        super({
-            key: "Four"
-        });
-    }
+    constructor(){ super({ key: "Four" }); }
     init(data){
-        console.log('Four Fours Scene');
         // ============================================================================
         // Personaje seleccionado como parametro
         // ============================================================================
@@ -88,193 +83,140 @@ class Four extends Phaser.Scene {
         // Eventos de unión número/ecuación
         // ============================================================================
         this.numeros[0].on('pointerover', () => { this.numeros[0].setScale(0.9); });
-        this.numeros[0].on('pointerout', () => { this.numeros[0].setScale(0.8); });
-        this.numeros[0].on('pointerup', () => {
+        this.numeros[0].on('pointerout',  () => { this.numeros[0].setScale(0.8); });
+        this.numeros[0].on('pointerup',   () => {
             if(this.isMarked() == false){
-                this.idxNum = 0;
-                this.numeros[0].flipX = true;
-                this.shipMarked[0] = true;
+                this.idxNum = 0; this.numeros[0].flipX = true; this.shipMarked[0] = true;
             }
         });
         //____________________________________________________________________________
         this.numeros[1].on('pointerover', () => { this.numeros[1].setScale(0.9); });
-        this.numeros[1].on('pointerout', () => { this.numeros[1].setScale(0.8); });
-        this.numeros[1].on('pointerup', () => {
+        this.numeros[1].on('pointerout',  () => { this.numeros[1].setScale(0.8); });
+        this.numeros[1].on('pointerup',   () => {
             if(this.isMarked() == false){
-                this.idxNum = 1;
-                this.numeros[1].flipX = true;
-                this.shipMarked[1] = true;
+                this.idxNum = 1; this.numeros[1].flipX = true; this.shipMarked[1] = true;
             }
         });
         //____________________________________________________________________________
         this.numeros[2].on('pointerover', () => { this.numeros[2].setScale(0.9); });
-        this.numeros[2].on('pointerout', () => { this.numeros[2].setScale(0.8); });
-        this.numeros[2].on('pointerup', () => {
-            if(this.isMarked() == false){
-                this.idxNum = 2;
-                this.numeros[2].flipX = true;
-                this.shipMarked[2] = true;
+        this.numeros[2].on('pointerout',  () => { this.numeros[2].setScale(0.8); });
+        this.numeros[2].on('pointerup',   () => {
+            if(this.isMarked() == false){ this.idxNum = 2; this.numeros[2].flipX = true; this.shipMarked[2] = true;
             }
-        });//____________________________________________________________________________
+        });
+        //____________________________________________________________________________
         this.numeros[3].on('pointerover', () => { this.numeros[3].setScale(0.9); });
-        this.numeros[3].on('pointerout', () => { this.numeros[3].setScale(0.8); });
-        this.numeros[3].on('pointerup', () => {
-            if(this.isMarked() == false){
-                this.idxNum = 3;
-                this.numeros[3].flipX = true;
-                this.shipMarked[3] = true;
+        this.numeros[3].on('pointerout',  () => { this.numeros[3].setScale(0.8); });
+        this.numeros[3].on('pointerup',   () => {
+            if(this.isMarked() == false){ this.idxNum = 3; this.numeros[3].flipX = true; this.shipMarked[3] = true;
             }
         });
         //____________________________________________________________________________
         this.numeros[4].on('pointerover', () => { this.numeros[4].setScale(0.9); });
-        this.numeros[4].on('pointerout', () => { this.numeros[4].setScale(0.8); });
-        this.numeros[4].on('pointerup', () => {
-            if(this.isMarked() == false){
-                this.idxNum = 4;
-                this.numeros[4].flipX = true;
-                this.shipMarked[4] = true;
+        this.numeros[4].on('pointerout',  () => { this.numeros[4].setScale(0.8); });
+        this.numeros[4].on('pointerup',   () => {
+            if(this.isMarked() == false){ this.idxNum = 4; this.numeros[4].flipX = true; this.shipMarked[4] = true;
             }
-            console.log(this.idxNum);
-            console.log(this.shipMarked);
         });
         //____________________________________________________________________________
         this.numeros[5].on('pointerover', () => { this.numeros[5].setScale(0.9); });
-        this.numeros[5].on('pointerout', () => { this.numeros[5].setScale(0.8); });
-        this.numeros[5].on('pointerup', () => {
+        this.numeros[5].on('pointerout',  () => { this.numeros[5].setScale(0.8); });
+        this.numeros[5].on('pointerup',   () => {
             if(this.isMarked() == false){
-                this.idxNum = 5;
-                this.numeros[5].flipX = true;
-                this.shipMarked[5] = true;
+                this.idxNum = 5; this.numeros[5].flipX = true; this.shipMarked[5] = true;
             }
         });
         //____________________________________________________________________________
         this.numeros[6].on('pointerover', () => { this.numeros[6].setScale(0.9); });
-        this.numeros[6].on('pointerout', () => { this.numeros[6].setScale(0.8); });
-        this.numeros[6].on('pointerup', () => {
+        this.numeros[6].on('pointerout',  () => { this.numeros[6].setScale(0.8); });
+        this.numeros[6].on('pointerup',   () => {
             if(this.isMarked() == false){
-                this.idxNum = 6;
-                this.numeros[6].flipX = true;
-                this.shipMarked[6] = true;
+                this.idxNum = 6; this.numeros[6].flipX = true; this.shipMarked[6] = true;
             }
         });
         //____________________________________________________________________________
         this.numeros[7].on('pointerover', () => { this.numeros[7].setScale(0.9); });
-        this.numeros[7].on('pointerout', () => { this.numeros[7].setScale(0.8); });
-        this.numeros[7].on('pointerup', () => {
+        this.numeros[7].on('pointerout',  () => { this.numeros[7].setScale(0.8); });
+        this.numeros[7].on('pointerup',   () => {
             if(this.isMarked() == false){
-                this.idxNum = 7;
-                this.numeros[7].flipX = true;
-                this.shipMarked[7] = true;
+                this.idxNum = 7; this.numeros[7].flipX = true; this.shipMarked[7] = true;
             }
         });
         //____________________________________________________________________________
         this.numeros[8].on('pointerover', () => { this.numeros[8].setScale(0.9); });
-        this.numeros[8].on('pointerout', () => { this.numeros[8].setScale(0.8); });
-        this.numeros[8].on('pointerup', () => {
+        this.numeros[8].on('pointerout',  () => { this.numeros[8].setScale(0.8); });
+        this.numeros[8].on('pointerup',   () => {
             if(this.isMarked() == false){
-                this.idxNum = 8;
-                this.numeros[8].flipX = true;
-                this.shipMarked[8] = true;
+                this.idxNum = 8; this.numeros[8].flipX = true; this.shipMarked[8] = true;
             }
         });
         //____________________________________________________________________________
         this.numeros[9].on('pointerover', () => { this.numeros[9].setScale(0.9); });
-        this.numeros[9].on('pointerout', () => { this.numeros[9].setScale(0.8); });
-        this.numeros[9].on('pointerup', () => {
+        this.numeros[9].on('pointerout',  () => { this.numeros[9].setScale(0.8); });
+        this.numeros[9].on('pointerup',   () => {
             if(this.isMarked() == false){
-                this.idxNum = 9;
-                this.numeros[9].flipX = true;
-                this.shipMarked[9] = true;
+                this.idxNum = 9; this.numeros[9].flipX = true; this.shipMarked[9] = true;
             }
         });
         //Ecuaciones
         this.ecuaciones[0].on('pointerover', () => { this.ecuaciones[0].setScale(0.9); });
-        this.ecuaciones[0].on('pointerout', () => { this.ecuaciones[0].setScale(0.8); });
-        this.ecuaciones[0].on('pointerup', () => {
-            if(this.isMarked() == true){
-                this.idxEq = this.ecuaciones[0].name;
-                this.match();
-            }
+        this.ecuaciones[0].on('pointerout',  () => { this.ecuaciones[0].setScale(0.8); });
+        this.ecuaciones[0].on('pointerup',   () => {
+            if(this.isMarked() == true){ this.idxEq = this.ecuaciones[0].name; this.match(); }
         });
         //____________________________________________________________________________
         this.ecuaciones[1].on('pointerover', () => { this.ecuaciones[1].setScale(0.9); });
-        this.ecuaciones[1].on('pointerout', () => { this.ecuaciones[1].setScale(0.8); });
-        this.ecuaciones[1].on('pointerup', () => {
-            if(this.isMarked() == true){
-                this.idxEq = this.ecuaciones[1].name;
-                this.match();
-            }
+        this.ecuaciones[1].on('pointerout',  () => { this.ecuaciones[1].setScale(0.8); });
+        this.ecuaciones[1].on('pointerup',   () => {
+            if(this.isMarked() == true){ this.idxEq = this.ecuaciones[1].name; this.match(); }
         });
         //____________________________________________________________________________
         this.ecuaciones[2].on('pointerover', () => { this.ecuaciones[2].setScale(0.9); });
-        this.ecuaciones[2].on('pointerout', () => { this.ecuaciones[2].setScale(0.8); });
-        this.ecuaciones[2].on('pointerup', () => {
-            if(this.isMarked() == true){
-                this.idxEq = this.ecuaciones[2].name;
-                this.match();
-            }
-        });//____________________________________________________________________________
+        this.ecuaciones[2].on('pointerout',  () => { this.ecuaciones[2].setScale(0.8); });
+        this.ecuaciones[2].on('pointerup',   () => {
+            if(this.isMarked() == true){ this.idxEq = this.ecuaciones[2].name; this.match(); }
+        });
+        //____________________________________________________________________________
         this.ecuaciones[3].on('pointerover', () => { this.ecuaciones[3].setScale(0.9);});
-        this.ecuaciones[3].on('pointerout', () => { this.ecuaciones[3].setScale(0.8); });
-        this.ecuaciones[3].on('pointerup', () => {
-            if(this.isMarked() == true){
-                this.idxEq = this.ecuaciones[3].name;
-                this.match();
-            }
+        this.ecuaciones[3].on('pointerout',  () => { this.ecuaciones[3].setScale(0.8); });
+        this.ecuaciones[3].on('pointerup',   () => {
+            if(this.isMarked() == true){ this.idxEq = this.ecuaciones[3].name; this.match(); }
         });
         //____________________________________________________________________________
         this.ecuaciones[4].on('pointerover', () => { this.ecuaciones[4].setScale(0.9); });
-        this.ecuaciones[4].on('pointerout', () => { this.ecuaciones[4].setScale(0.8); });
-        this.ecuaciones[4].on('pointerup', () => {
-            if(this.isMarked() == true){
-                this.idxEq = this.ecuaciones[4].name;
-                this.match();
-            }
+        this.ecuaciones[4].on('pointerout',  () => { this.ecuaciones[4].setScale(0.8); });
+        this.ecuaciones[4].on('pointerup',   () => {
+            if(this.isMarked() == true){ this.idxEq = this.ecuaciones[4].name; this.match(); }
         });
         //____________________________________________________________________________
         this.ecuaciones[5].on('pointerover', () => { this.ecuaciones[5].setScale(0.9); });
-        this.ecuaciones[5].on('pointerout', () => { this.ecuaciones[5].setScale(0.8); });
-        this.ecuaciones[5].on('pointerup', () => {
-            if(this.isMarked() == true){
-                this.idxEq = this.ecuaciones[5].name;
-                this.match();
-            }
+        this.ecuaciones[5].on('pointerout',  () => { this.ecuaciones[5].setScale(0.8); });
+        this.ecuaciones[5].on('pointerup',   () => {
+            if(this.isMarked() == true){ this.idxEq = this.ecuaciones[5].name; this.match(); }
         });
         //____________________________________________________________________________
         this.ecuaciones[6].on('pointerover', () => { this.ecuaciones[6].setScale(0.9); });
-        this.ecuaciones[6].on('pointerout', () => { this.ecuaciones[6].setScale(0.8); });
-        this.ecuaciones[6].on('pointerup', () => {
-            if(this.isMarked() == true){
-                this.idxEq = this.ecuaciones[6].name;
-                this.match();
-            }
+        this.ecuaciones[6].on('pointerout',  () => { this.ecuaciones[6].setScale(0.8); });
+        this.ecuaciones[6].on('pointerup',   () => {
+            if(this.isMarked() == true){ this.idxEq = this.ecuaciones[6].name; this.match(); }
         });
         //____________________________________________________________________________
         this.ecuaciones[7].on('pointerover', () => { this.ecuaciones[7].setScale(0.9); });
-        this.ecuaciones[7].on('pointerout', () => { this.ecuaciones[7].setScale(0.8); });
-        this.ecuaciones[7].on('pointerup', () => {
-            if(this.isMarked() == true){
-                this.idxEq = this.ecuaciones[7].name;
-                this.match();
-            }
+        this.ecuaciones[7].on('pointerout',  () => { this.ecuaciones[7].setScale(0.8); });
+        this.ecuaciones[7].on('pointerup',   () => {
+            if(this.isMarked() == true){ this.idxEq = this.ecuaciones[7].name; this.match(); }
         });
         //____________________________________________________________________________
         this.ecuaciones[8].on('pointerover', () => { this.ecuaciones[8].setScale(0.9); });
-        this.ecuaciones[8].on('pointerout', () => { this.ecuaciones[8].setScale(0.8); });
-        this.ecuaciones[8].on('pointerup', () => {
-            if(this.isMarked() == true){
-                this.idxEq = this.ecuaciones[8].name;
-                this.match();
-            }
+        this.ecuaciones[8].on('pointerout',  () => { this.ecuaciones[8].setScale(0.8); });
+        this.ecuaciones[8].on('pointerup',   () => {
+            if(this.isMarked() == true){ this.idxEq = this.ecuaciones[8].name; this.match(); }
         });
         //____________________________________________________________________________
         this.ecuaciones[9].on('pointerover', () => { this.ecuaciones[9].setScale(0.9); });
-        this.ecuaciones[9].on('pointerout', () => { this.ecuaciones[9].setScale(0.8); });
-        this.ecuaciones[9].on('pointerup', () => {
-            if(this.isMarked() == true){
-                this.idxEq = this.ecuaciones[9].name;
-                this.match();
-            }
+        this.ecuaciones[9].on('pointerout',  () => { this.ecuaciones[9].setScale(0.8); });
+        this.ecuaciones[9].on('pointerup',   () => {
+            if(this.isMarked() == true){ this.idxEq = this.ecuaciones[9].name; this.match(); }
         });
 
         // ============================================================================
@@ -282,8 +224,8 @@ class Four extends Phaser.Scene {
         // ============================================================================
         //Boton de salida
         this.btnExit.on('pointerover', () => { this.btnExit.setScale(0.8); });
-        this.btnExit.on('pointerout', () => { this.btnExit.setScale(0.7); });
-        this.btnExit.on('pointerup', () => {
+        this.btnExit.on('pointerout',  () => { this.btnExit.setScale(0.7); });
+        this.btnExit.on('pointerup',   () => {
             this.scene.start('Levels', {
                 personaje: this.personajeAct,
                 monedas: this.nCoin,
@@ -292,20 +234,19 @@ class Four extends Phaser.Scene {
         });
         //Boton de ayuda
         this.btnInfo.on('pointerover', () => { this.btnInfo.setScale(0.8); });
-        this.btnInfo.on('pointerout', () => { this.btnInfo.setScale(0.7); });
-        this.btnInfo.on('pointerup', () => { this.container2.setVisible(true); });
+        this.btnInfo.on('pointerout',  () => { this.btnInfo.setScale(0.7); });
+        this.btnInfo.on('pointerup',   () => { this.container2.setVisible(true); });
         //Boton que cierra el modal
-        this.closeModal2.on('pointerover', () => { this.closeModal2.setScale(0.8); });
-        this.closeModal2.on('pointerout', () => { this.closeModal2.setScale(0.75); });
-        this.closeModal2.on('pointerup', () => { this.container2.setVisible(false); });
+        this.closeModal2.on('pointerover', () => { this.closeModal2.setScale(0.80); });
+        this.closeModal2.on('pointerout',  () => { this.closeModal2.setScale(0.75); });
+        this.closeModal2.on('pointerup',   () => { this.container2.setVisible(false); });
     }
     // ============================================================================
     // Función que agrega interpolaciones al personaje mostrado
     // ============================================================================
     authomaticTweens(){
         this.add.tween({
-            targets: [this.personaje],
-            loop: -1,
+            targets: [this.personaje], loop: -1,
             onStart: (tween, obj, target) => {
                 if(this.personajeAct == 'pirata_1'){
                     obj[0].anims.play('idle', true);
@@ -317,11 +258,8 @@ class Four extends Phaser.Scene {
             },
         });
         this.add.tween({
-            targets: [this.coin],
-            loop: -1,
-            onStart: (tween, obj, target) => {
-                obj[0].anims.play('rotate',true);
-            },
+            targets: [this.coin], loop: -1,
+            onStart: (tween, obj, target) => { obj[0].anims.play('rotate',true); },
         });
     }
     // ============================================================================
@@ -371,27 +309,20 @@ class Four extends Phaser.Scene {
         if(this.idxNum === this.idxEq){   
             this.tweens = this.add.tween({
                 targets: [this.numeros[this.idxNum],this.textos[this.idxNum]],
-                x: auxEc.x,
-                y:auxEc.y,
-                duration: 2000,
-                onStart: () => {
-                    this.numeros[this.idxNum].flipX = true;
-                },
+                x: auxEc.x, y: auxEc.y, duration: 2000,
+                onStart: () => { this.numeros[this.idxNum].flipX = true; },
                 onComplete: (tween, obj, target) => {
                     this.numeros[this.idxNum].setVisible(false);
                     this.textos[this.idxNum].setVisible(false);
                     auxEc.setVisible(false);
                     this.marked += 1;
-                    if(this.winner() == true){
-                        this.win();
-                    }
+                    if(this.winner() == true){ this.win(); }
                 },
             });
         }else{
             this.tweens = this.add.tween({
                 targets: [this.numeros[this.idxNum],this.textos[this.idxNum], auxEc],
-                tint: 0xff0000,
-                duration: 500,
+                tint: 0xff0000, duration: 500,
                 onComplete: (tween, obj, target) => {
                     this.numeros[this.idxNum].clearTint();
                     this.textos[this.idxNum].clearTint();
@@ -406,10 +337,8 @@ class Four extends Phaser.Scene {
     // Comprueba si ya ganaste
     // ============================================================================
     winner(){
-        let resp = true;
-        if(this.marked != 10){
-                resp = false;
-        }
+        let resp;
+        this.marked != 10 ? resp = false : resp = true;
     return resp;
     }
     // ============================================================================

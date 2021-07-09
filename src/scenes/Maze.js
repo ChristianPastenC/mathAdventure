@@ -1,13 +1,8 @@
 class Maze extends Phaser.Scene {
-    
-    constructor(){
-        super({
-            key: "Maze"
-        });
-    }
+
+    constructor(){ super({ key: "Maze" }); }
 
     init(data){
-        console.log('Maze Scene');
         // ============================================================================
         // Personaje seleccionado como parametro
         // ============================================================================
@@ -25,13 +20,9 @@ class Maze extends Phaser.Scene {
         this.rightPressed = false;
         this.upPressed = false;
         this.ref = 0;
-        if(this.personajeAct == 'pirata_1'){
-            this.ref = 1;
-        }else if(this.personajeAct == 'pirata_2'){
-            this.ref = 2;
-        }else{
-            this.ref = 3;
-        }
+        if(this.personajeAct == 'pirata_1'){ this.ref = 1; }
+            else if(this.personajeAct == 'pirata_2'){ this.ref = 2; }
+                else{ this.ref = 3; }
     }
 
     create(){
@@ -60,11 +51,7 @@ class Maze extends Phaser.Scene {
         this.grupoMuro.create(752,110,'wallH').setScale(.9,1);
         this.grupoMuro.create(330,110,'wallH').setScale(.5,1);
         this.grupoMuro.create(760,280,'wallV').setScale(1,.3);
-        this.grupoMuro.children.iterate( (p) => {
-            p.setImmovable(true);
-            p.body.allowGravity = false;
-            p.body.setOffset(0,0);
-        });
+        this.grupoMuro.children.iterate( (p) => { p.setImmovable(true); p.body.allowGravity = false; p.body.setOffset(0,0); });
         this.endPoint = this.add.rectangle(950,65,40,50);
         this.physics.add.existing(this.endPoint);
         this.endPoint.body.setAllowGravity(false);
@@ -73,9 +60,9 @@ class Maze extends Phaser.Scene {
         // Interfaz y decoración
         // ============================================================================
         //Botones de movimiento
-        this.btnUp = this.add.image(920,340,'btnUp').setScale(0.8).setInteractive().setDepth(2);
-        this.btnDown = this.add.image(920,420,'btnDown').setScale(0.8).setInteractive().setDepth(2);
-        this.btnLeft = this.add.image(870,380,'btnPrev').setScale(0.8).setInteractive().setDepth(2);
+        this.btnUp    = this.add.image(920,340,'btnUp').setScale(0.8).setInteractive().setDepth(2);
+        this.btnDown  = this.add.image(920,420,'btnDown').setScale(0.8).setInteractive().setDepth(2);
+        this.btnLeft  = this.add.image(870,380,'btnPrev').setScale(0.8).setInteractive().setDepth(2);
         this.btnRight = this.add.image(970,380,'btnNext').setScale(0.8).setInteractive().setDepth(2);
         //Personaje
         this.personaje = this.physics.add.sprite(70,this.scale.height-70,this.personajeAct).setScale(0.35).setInteractive();
@@ -85,11 +72,11 @@ class Maze extends Phaser.Scene {
         this.personaje.body.setSize(100, 100);
         this.personaje.body.setOffset(80, 100);
         //Botones externos
-        this.btnExit = this.add.image(970,28,'btnClose').setScale(.7).setInteractive();
-        this.btnInfo = this.add.image(920,30,'btnHelp').setScale(.7).setInteractive();
+        this.btnExit    = this.add.image(970,28,'btnClose').setScale(.7).setInteractive();
+        this.btnInfo    = this.add.image(920,30,'btnHelp').setScale(.7).setInteractive();
         this.btnRestart = this.add.image(30,30,'btnReload').setScale(.7).setInteractive();
-        this.txtCoin = this.add.text(470,0,this.nCoin,{font: "35px MiTica", fill:"#000000"});
-        this.coin = this.add.sprite(540,20,'coin').setScale(.5);
+        this.txtCoin    = this.add.text(470,0,this.nCoin,{font: "35px MiTica", fill:"#000000"});
+        this.coin       = this.add.sprite(540,20,'coin').setScale(.5);
         this.authomaticTweens();
         //Informacion del juego
         this.container6 = this.add.container(this.scale.width/2,this.scale.height/2);
@@ -111,20 +98,20 @@ class Maze extends Phaser.Scene {
         // ============================================================================
         //Movimiento hacia arriba
         this.btnUp.on('pointerover', () => { this.btnUp.setScale(0.9); this.upPressed = true; });
-        this.btnUp.on('pointerout', () => { this.btnUp.setScale(0.8); this.upPressed = false; });
-        this.btnUp.on('pointerup', () => { this.upPressed = true; });
+        this.btnUp.on('pointerout',  () => { this.btnUp.setScale(0.8); this.upPressed = false; });
+        this.btnUp.on('pointerup',   () => { this.upPressed = true; });
         //Movimiento hacia abajo
         this.btnDown.on('pointerover', () => { this.btnDown.setScale(0.9); this.downPressed = true; });
-        this.btnDown.on('pointerout', () => { this.btnDown.setScale(0.8); this.downPressed = false; });
-        this.btnDown.on('pointerup', () => { this.downPressed = true; });
+        this.btnDown.on('pointerout',  () => { this.btnDown.setScale(0.8); this.downPressed = false; });
+        this.btnDown.on('pointerup',   () => { this.downPressed = true; });
         //Movimiento a la Izquierda
         this.btnLeft.on('pointerover', () => { this.btnLeft.setScale(0.9); this.leftPressed = true; });
-        this.btnLeft.on('pointerout', () => { this.btnLeft.setScale(0.8); this.leftPressed = false; });
-        this.btnLeft.on('pointerup', () => { this.leftPressed = true; });
+        this.btnLeft.on('pointerout',  () => { this.btnLeft.setScale(0.8); this.leftPressed = false; });
+        this.btnLeft.on('pointerup',   () => { this.leftPressed = true; });
         //Movimiento a la Derecha
         this.btnRight.on('pointerover', () => { this.btnRight.setScale(0.9); this.rightPressed = true; });
-        this.btnRight.on('pointerout', () => { this.btnRight.setScale(0.8); this.rightPressed = false; });
-        this.btnRight.on('pointerup', () => { this.rightPressed = true; });
+        this.btnRight.on('pointerout',  () => { this.btnRight.setScale(0.8); this.rightPressed = false; });
+        this.btnRight.on('pointerup',   () => { this.rightPressed = true; });
         // ============================================================================
         // Manejo de Colisiones
         // ============================================================================
@@ -141,12 +128,12 @@ class Maze extends Phaser.Scene {
         // ============================================================================
         //Boton de reinicio
         this.btnRestart.on('pointerover', () => { this.btnRestart.setScale(0.8); });
-        this.btnRestart.on('pointerout', () => { this.btnRestart.setScale(0.7); });
-        this.btnRestart.on('pointerup', () => { this.personaje.x = 70; this.personaje.y = this.scale.height-70; });
+        this.btnRestart.on('pointerout',  () => { this.btnRestart.setScale(0.7); });
+        this.btnRestart.on('pointerup',   () => { this.personaje.x = 70; this.personaje.y = this.scale.height-70; });
         //Boton de salida
         this.btnExit.on('pointerover', () => { this.btnExit.setScale(0.8); });
-        this.btnExit.on('pointerout', () => { this.btnExit.setScale(0.7); });
-        this.btnExit.on('pointerup', () => {
+        this.btnExit.on('pointerout',  () => { this.btnExit.setScale(0.7); });
+        this.btnExit.on('pointerup',   () => {
             this.scene.start('Levels', {
                 personaje: this.personajeAct,
                 monedas: this.nCoin,
@@ -155,12 +142,12 @@ class Maze extends Phaser.Scene {
         });
         //Boton de ayuda
         this.btnInfo.on('pointerover', () => { this.btnInfo.setScale(0.8); });
-        this.btnInfo.on('pointerout', () => { this.btnInfo.setScale(0.7); });
-        this.btnInfo.on('pointerup', () => { this.container6.setVisible(true); });
+        this.btnInfo.on('pointerout',  () => { this.btnInfo.setScale(0.7); });
+        this.btnInfo.on('pointerup',   () => { this.container6.setVisible(true); });
         //Boton que cierra el modal
         this.closeModal6.on('pointerover', () => { this.closeModal6.setScale(0.8); });
-        this.closeModal6.on('pointerout', () => { this.closeModal6.setScale(0.75); });
-        this.closeModal6.on('pointerup', () => { this.container6.setVisible(false); });
+        this.closeModal6.on('pointerout',  () => { this.closeModal6.setScale(0.75); });
+        this.closeModal6.on('pointerup',   () => { this.container6.setVisible(false); });
     }
 
     update(){
@@ -195,11 +182,8 @@ class Maze extends Phaser.Scene {
     // ============================================================================
     authomaticTweens(){
         this.add.tween({
-            targets: [this.coin],
-            loop: -1,
-            onStart: (tween, obj, target) => {
-                obj[0].anims.play('rotate',true);
-            },
+            targets: [this.coin], loop: -1,
+            onStart: (tween, obj, target) => { obj[0].anims.play('rotate',true); },
         });
     }
     // ============================================================================

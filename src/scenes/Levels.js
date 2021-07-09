@@ -1,13 +1,8 @@
 class Levels extends Phaser.Scene {
     
-    constructor(){
-        super({
-            key: "Levels"
-        });
-    }
+    constructor(){ super({ key: "Levels" }); }
 
     init(data){
-        console.log('Levels Scene');
         // ============================================================================
         // Personaje seleccionado como parametro
         // ============================================================================
@@ -46,15 +41,12 @@ class Levels extends Phaser.Scene {
         this.island6 = this.physics.add.image(2100,380,'isla6').setScale(.75);
         this.island7 = this.physics.add.image(2800,350,'isla7');
         this.island8 = this.physics.add.image(3400,250,'isla8');
-        this.ship = this.add.rectangle(150,100,30,30);
+        this.ship    = this.add.rectangle(150,100,30,30);
         this.physics.add.existing(this.ship);
         this.shipRight = this.physics.add.image(150,75,'shiptoRight');
-        this.shipDown = this.physics.add.image(150,75,'shiptoDown');
-        this.shipDown.setVisible(false);
-        this.shipLeft = this.physics.add.image(150,75,'shiptoLeft');
-        this.shipLeft.setVisible(false);
-        this.shipUp = this.physics.add.image(150,75,'shiptoUp');
-        this.shipUp.setVisible(false);
+        this.shipDown  = this.physics.add.image(150,75,'shiptoDown').setVisible(false);
+        this.shipLeft  = this.physics.add.image(150,75,'shiptoLeft').setVisible(false);
+        this.shipUp    = this.physics.add.image(150,75,'shiptoUp').setVisible(false);
         // ============================================================================
         // Interfaz y decoración
         // ============================================================================
@@ -83,13 +75,9 @@ class Levels extends Phaser.Scene {
         // Función de botones principales
         // ============================================================================
         //Boton de salida
-        this.btnExit.on('pointerover', () => {
-            this.btnExit.setScale(0.8);
-        });
-        this.btnExit.on('pointerout', () => {
-            this.btnExit.setScale(0.7);
-        });
-        this.btnExit.on('pointerup', () => {
+        this.btnExit.on('pointerover', () => { this.btnExit.setScale(0.8); });
+        this.btnExit.on('pointerout',  () => { this.btnExit.setScale(0.7); });
+        this.btnExit.on('pointerup',   () => {
             this.scene.start('Bootloader', {
                 personaje: this.personajeAct,
                 monedas: this.nCoin,
@@ -105,11 +93,8 @@ class Levels extends Phaser.Scene {
             this.shipRight.setVisible(false);
             this.shipUp.setVisible(true);
         });
-        this.btnUp.on('pointerout', () => {
-            this.btnUp.setScale(0.8);
-            this.upPressed = false;
-        });
-        this.btnUp.on('pointerup', () => {
+        this.btnUp.on('pointerout', () => { this.btnUp.setScale(0.8); this.upPressed = false; });
+        this.btnUp.on('pointerup',  () => {
             this.upPressed = true;
             this.shipDown.setVisible(false);
             this.shipLeft.setVisible(false);
@@ -125,11 +110,8 @@ class Levels extends Phaser.Scene {
             this.shipRight.setVisible(false);
             this.shipUp.setVisible(false);
         });
-        this.btnDown.on('pointerout', () => {
-            this.btnDown.setScale(0.8);
-            this.downPressed = false;
-        });
-        this.btnDown.on('pointerup', () => {
+        this.btnDown.on('pointerout', () => { this.btnDown.setScale(0.8); this.downPressed = false; });
+        this.btnDown.on('pointerup',  () => {
             this.downPressed = true;
             this.shipDown.setVisible(true);
             this.shipLeft.setVisible(false);
@@ -145,11 +127,8 @@ class Levels extends Phaser.Scene {
             this.shipRight.setVisible(false);
             this.shipUp.setVisible(false);
         });
-        this.btnLeft.on('pointerout', () => {
-            this.btnLeft.setScale(0.8);
-            this.leftPressed = false;
-        });
-        this.btnLeft.on('pointerup', () => {
+        this.btnLeft.on('pointerout', () => { this.btnLeft.setScale(0.8); this.leftPressed = false; });
+        this.btnLeft.on('pointerup',  () => {
             this.leftPressed = true;
             this.shipDown.setVisible(false);
             this.shipLeft.setVisible(true);
@@ -165,11 +144,8 @@ class Levels extends Phaser.Scene {
             this.shipRight.setVisible(true);
             this.shipUp.setVisible(false);
         });
-        this.btnRight.on('pointerout', () => {
-            this.btnRight.setScale(0.8);
-            this.rightPressed = false;
-        });
-        this.btnRight.on('pointerup', () => {
+        this.btnRight.on('pointerout', () => { this.btnRight.setScale(0.8); this.rightPressed = false; });
+        this.btnRight.on('pointerup',  () => {
             this.rightPressed = true;
             this.shipDown.setVisible(false);
             this.shipLeft.setVisible(false);
@@ -185,34 +161,13 @@ class Levels extends Phaser.Scene {
         // ============================================================================
         //  Configuración de Colisiones
         // ============================================================================
-        this.physics.add.collider(this.ship,this.island1, ()=> {
-            this.desactivaMovimiento();
-            this.container1.setVisible(true);
-        });
-        this.physics.add.collider(this.ship,this.island2, ()=> {
-            this.desactivaMovimiento();
-            this.container2.setVisible(true);
-        });
-        this.physics.add.collider(this.ship,this.island4, ()=> {
-            this.desactivaMovimiento();
-            this.container4.setVisible(true);
-        });
-        this.physics.add.collider(this.ship,this.island5, ()=> {
-            this.desactivaMovimiento();
-            this.container5.setVisible(true);
-        });
-        this.physics.add.collider(this.ship,this.island6, ()=> {
-            this.desactivaMovimiento();
-            this.container6.setVisible(true);
-        });
-        this.physics.add.collider(this.ship,this.island7, ()=> {
-            this.desactivaMovimiento();
-            this.container7.setVisible(true);
-        });
-        this.physics.add.collider(this.ship,this.island8, ()=> {
-            this.desactivaMovimiento();
-            this.container8.setVisible(true);
-        });
+        this.physics.add.collider(this.ship,this.island1, ()=> { this.desactivaMovimiento(); this.container1.setVisible(true); });
+        this.physics.add.collider(this.ship,this.island2, ()=> { this.desactivaMovimiento(); this.container2.setVisible(true); });
+        this.physics.add.collider(this.ship,this.island4, ()=> { this.desactivaMovimiento(); this.container4.setVisible(true); });
+        this.physics.add.collider(this.ship,this.island5, ()=> { this.desactivaMovimiento(); this.container5.setVisible(true); });
+        this.physics.add.collider(this.ship,this.island6, ()=> { this.desactivaMovimiento(); this.container6.setVisible(true); });
+        this.physics.add.collider(this.ship,this.island7, ()=> { this.desactivaMovimiento(); this.container7.setVisible(true); });
+        this.physics.add.collider(this.ship,this.island8, ()=> { this.desactivaMovimiento(); this.container8.setVisible(true); });
         // ============================================================================
         //  Creación de Modales
         // ============================================================================
@@ -370,185 +325,97 @@ class Levels extends Phaser.Scene {
         //  Función de botones en modales
         // ============================================================================
         // Modal Nivel Uno
-        this.closeModal1.on('pointerover', () => {
-            this.closeModal1.setScale(.8);
-        });
-        this.closeModal1.on('pointerout', () => {
-            this.closeModal1.setScale(.75);
-        });
-        this.closeModal1.on('pointerup', () => {
-            this.container1.setVisible(false);
-            this.initialPosition();
-        });
+        this.closeModal1.on('pointerover', () => { this.closeModal1.setScale(.80); });
+        this.closeModal1.on('pointerout',  () => { this.closeModal1.setScale(.75); });
+        this.closeModal1.on('pointerup',   () => { this.container1.setVisible(false); this.initialPosition(); });
 
-        this.init1.on('pointerover', () => {
-            this.init1.setScale(1.1);
-        });
-        this.init1.on('pointerout', () => {
-            this.init1.setScale(1);
-        });
-        this.init1.on('pointerup', () => {
-            console.log('Inicia Nivel 1');
+        this.init1.on('pointerover', () => { this.init1.setScale(1.1); });
+        this.init1.on('pointerout',  () => { this.init1.setScale(1.0); });
+        this.init1.on('pointerup',   () => {
             this.scene.start('Puzzle', {
                 personaje: this.personajeAct,
                 monedas: this.nCoin,
                 comprados: this.store,
             });
         });
-
         // Modal Nivel Dos
-        this.closeModal2.on('pointerover', () => {
-            this.closeModal2.setScale(.8);
-        });
-        this.closeModal2.on('pointerout', () => {
-            this.closeModal2.setScale(.75);
-        });
-        this.closeModal2.on('pointerup', () => {
-            this.container2.setVisible(false);
-            this.initialPosition();
-        });
+        this.closeModal2.on('pointerover', () => { this.closeModal2.setScale(.80); });
+        this.closeModal2.on('pointerout',  () => { this.closeModal2.setScale(.75); });
+        this.closeModal2.on('pointerup',   () => { this.container2.setVisible(false); this.initialPosition(); });
 
-        this.init2.on('pointerover', () => {
-            this.init2.setScale(1.1);
-        });
-        this.init2.on('pointerout', () => {
-            this.init2.setScale(1);
-        });
-        this.init2.on('pointerup', () => {
-            console.log('Inicia Nivel 2');
+        this.init2.on('pointerover', () => { this.init2.setScale(1.1); });
+        this.init2.on('pointerout',  () => { this.init2.setScale(1.0); });
+        this.init2.on('pointerup',   () => {
             this.scene.start('Four', {
                 personaje: this.personajeAct,
                 monedas: this.nCoin,
                 comprados: this.store,
             });
         });
-
         // Modal Nivel Cuatro
-        this.closeModal4.on('pointerover', () => {
-            this.closeModal4.setScale(.8);
-        });
-        this.closeModal4.on('pointerout', () => {
-            this.closeModal4.setScale(.75);
-        });
-        this.closeModal4.on('pointerup', () => {
-            this.container4.setVisible(false);
-            this.initialPosition();
-        });
+        this.closeModal4.on('pointerover', () => { this.closeModal4.setScale(.80); });
+        this.closeModal4.on('pointerout',  () => { this.closeModal4.setScale(.75); });
+        this.closeModal4.on('pointerup',   () => { this.container4.setVisible(false); this.initialPosition(); });
 
-        this.init4.on('pointerover', () => {
-            this.init4.setScale(1.1);
-        });
-        this.init4.on('pointerout', () => {
-            this.init4.setScale(1);
-        });
-        this.init4.on('pointerup', () => {
+        this.init4.on('pointerover', () => { this.init4.setScale(1.1); });
+        this.init4.on('pointerout',  () => { this.init4.setScale(1.0); });
+        this.init4.on('pointerup',   () => {
             this.scene.start('Square', {
                 personaje: this.personajeAct,
                 monedas: this.nCoin,
                 comprados: this.store,
             });
         });
-
         // Modal Nivel Cinco
-        this.closeModal5.on('pointerover', () => {
-            this.closeModal5.setScale(.8);
-        });
-        this.closeModal5.on('pointerout', () => {
-            this.closeModal5.setScale(.75);
-        });
-        this.closeModal5.on('pointerup', () => {
-            this.container5.setVisible(false);
-            this.initialPosition();
-        });
+        this.closeModal5.on('pointerover', () => { this.closeModal5.setScale(.80); });
+        this.closeModal5.on('pointerout',  () => { this.closeModal5.setScale(.75); });
+        this.closeModal5.on('pointerup',   () => { this.container5.setVisible(false); this.initialPosition(); });
 
-        this.init5.on('pointerover', () => {
-            this.init5.setScale(1.1);
-        });
-        this.init5.on('pointerout', () => {
-            this.init5.setScale(1);
-        });
-        this.init5.on('pointerup', () => {
-            console.log('Inicia Nivel 5');
+        this.init5.on('pointerover', () => { this.init5.setScale(1.1); });
+        this.init5.on('pointerout',  () => { this.init5.setScale(1.0); });
+        this.init5.on('pointerup',   () => {
             this.scene.start('Hanoi', {
                 personaje: this.personajeAct,
                 monedas: this.nCoin,
                 comprados: this.store,
             });
         });
-
         // Modal Nivel Seis
-        this.closeModal6.on('pointerover', () => {
-            this.closeModal6.setScale(.8);
-        });
-        this.closeModal6.on('pointerout', () => {
-            this.closeModal6.setScale(.75);
-        });
-        this.closeModal6.on('pointerup', () => {
-            this.container6.setVisible(false);
-            this.initialPosition();
-        });
+        this.closeModal6.on('pointerover', () => { this.closeModal6.setScale(.80); });
+        this.closeModal6.on('pointerout',  () => { this.closeModal6.setScale(.75); });
+        this.closeModal6.on('pointerup',   () => { this.container6.setVisible(false); this.initialPosition(); });
 
-        this.init6.on('pointerover', () => {
-            this.init6.setScale(1.1);
-        });
-        this.init6.on('pointerout', () => {
-            this.init6.setScale(1);
-        });
-        this.init6.on('pointerup', () => {
+        this.init6.on('pointerover', () => { this.init6.setScale(1.1); });
+        this.init6.on('pointerout',  () => { this.init6.setScale(1.0); });
+        this.init6.on('pointerup',   () => {
             this.scene.start('Maze', {
                 personaje: this.personajeAct,
                 monedas: this.nCoin,
                 comprados: this.store,
             });
         });
-
         // Modal Nivel Siete
-        this.closeModal7.on('pointerover', () => {
-            this.closeModal7.setScale(.8);
-        });
-        this.closeModal7.on('pointerout', () => {
-            this.closeModal7.setScale(.75);
-        });
-        this.closeModal7.on('pointerup', () => {
-            this.container7.setVisible(false);
-            this.initialPosition();
-        });
+        this.closeModal7.on('pointerover', () => { this.closeModal7.setScale(.80); });
+        this.closeModal7.on('pointerout',  () => { this.closeModal7.setScale(.75); });
+        this.closeModal7.on('pointerup',   () => { this.container7.setVisible(false); this.initialPosition(); });
 
-        this.init7.on('pointerover', () => {
-            this.init7.setScale(1.1);
-        });
-        this.init7.on('pointerout', () => {
-            this.init7.setScale(1);
-        });
-        this.init7.on('pointerup', () => {
-            console.log('Inicia Nivel 7');
+        this.init7.on('pointerover', () => { this.init7.setScale(1.1); });
+        this.init7.on('pointerout',  () => { this.init7.setScale(1.0); });
+        this.init7.on('pointerup',   () => {
             this.scene.start('Riddle', {
                 personaje: this.personajeAct,
                 monedas: this.nCoin,
                 comprados: this.store,
             });
         });
-
         // Modal Nivel Ocho
-        this.closeModal8.on('pointerover', () => {
-            this.closeModal8.setScale(.8);
-        });
-        this.closeModal8.on('pointerout', () => {
-            this.closeModal8.setScale(.75);
-        });
-        this.closeModal8.on('pointerup', () => {
-            this.container8.setVisible(false);
-            this.initialPosition();
-        });
+        this.closeModal8.on('pointerover', () => { this.closeModal8.setScale(.80); });
+        this.closeModal8.on('pointerout',  () => { this.closeModal8.setScale(.75); });
+        this.closeModal8.on('pointerup',  () => { this.container8.setVisible(false); this.initialPosition(); });
 
-        this.init8.on('pointerover', () => {
-            this.init8.setScale(1.1);
-        });
-        this.init8.on('pointerout', () => {
-            this.init8.setScale(1);
-        });
-        this.init8.on('pointerup', () => {
-            console.log('Inicia Nivel 8');
+        this.init8.on('pointerover', () => { this.init8.setScale(1.1); });
+        this.init8.on('pointerout',  () => { this.init8.setScale(1.0); });
+        this.init8.on('pointerup',   () => {
             this.scene.start('Last', {
                 personaje: this.personajeAct,
                 monedas: this.nCoin,
@@ -594,8 +461,7 @@ class Levels extends Phaser.Scene {
     // ============================================================================
     authomaticTweens(){
         this.add.tween({
-            targets: [this.personaje],
-            loop: -1,
+            targets: [this.personaje], loop: -1,
             onStart: (tween, obj, target) => {
                 if(this.personajeAct == 'pirata_1'){
                     obj[0].anims.play('idle', true);
@@ -607,11 +473,8 @@ class Levels extends Phaser.Scene {
             },
         });
         this.add.tween({
-            targets: [this.coin],
-            loop: -1,
-            onStart: (tween, obj, target) => {
-                obj[0].anims.play('rotate',true);
-            },
+            targets: [this.coin], loop: -1,
+            onStart: (tween, obj, target) => { obj[0].anims.play('rotate',true); },
         });
     }
     // ============================================================================
@@ -639,5 +502,4 @@ class Levels extends Phaser.Scene {
         this.upPressed = false;
     }
 }
-
 export default Levels;

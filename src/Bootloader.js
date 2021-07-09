@@ -1,13 +1,6 @@
 class Bootloader extends Phaser.Scene {
-    
-    constructor(){
-        super({
-            key: "Bootloader"
-        });
-    }
-
+    constructor(){ super({ key: "Bootloader" }); }
     init(data){
-        console.log('Bootloader Scene');
         this.character = data.personaje;
         this.nCoin = data.monedas;
         this.store = data.comprados;
@@ -15,7 +8,6 @@ class Bootloader extends Phaser.Scene {
         if(!this.nCoin)    {    this.nCoin = 18;             }
         if(!this.store)    {    this.store = [false,false];  } 
     }
-
     preloadBar() {
         let progressBar = this.add.graphics();
         let progressBox = this.add.graphics();
@@ -28,9 +20,9 @@ class Bootloader extends Phaser.Scene {
         let loadingText = this.make.text({
             x: width / 2 ,
             y: height / 2 - 35,
-            text: 'Cargando...',
+            text: 'Cargando ...',
             style: {
-                font: '20px monospace',
+                font: '30px MiTica',
                 fill: '#ffffff'
             }
         });
@@ -41,7 +33,7 @@ class Bootloader extends Phaser.Scene {
             y: (height / 2) + 5,
             text: '0%',
             style: {
-                font: '18px monospace',
+                font: '18px MiTica',
                 fill: '#ffffff'
             }
         });
@@ -77,26 +69,19 @@ class Bootloader extends Phaser.Scene {
         // ============================================================================
         // UI
         // ============================================================================
-        this.load.image('btnAvatar','GUI/btn_avatar.png');
         this.load.image('btnBlock','GUI/btn_block.png');
         this.load.image('btnCar','GUI/btn_car.png');
         this.load.image('btnClose','GUI/btn_close.png');
         this.load.image('btnConfig','GUI/btn_config.png');
         this.load.image('btnDown','GUI/btn_down.png');
         this.load.image('btnHelp','GUI/btn_help.png');
-        this.load.image('btnMusic','GUI/btn_music.png');
         this.load.image('btnMusicOff','GUI/btn_musicOff.png');
         this.load.image('btnMusicOn','GUI/btn_musicOn.png');
         this.load.image('btnNext','GUI/btn_next.png');
         this.load.image('btnOk','GUI/btn_ok.png');
-        this.load.image('btnPause','GUI/btn_pause.png');
         this.load.image('btnPlay','GUI/btn_play.png');
         this.load.image('btnPrev','GUI/btn_prev.png');
         this.load.image('btnReload','GUI/btn_reload.png');
-        this.load.image('btnShutdown','GUI/btn_shutdown.png');
-        this.load.image('btnSoundOFF','GUI/btn_soundOFF.png');
-        this.load.image('btnSoundON','GUI/btn_soundON.png');
-        this.load.image('btnStop','GUI/btn_stop.png');
         this.load.image('btnUp','GUI/btn_up.png');
         this.load.image('btnInit','GUI/btn_init.png');
         this.load.atlas('coin', '/GUI/coin/coin.png',
@@ -171,17 +156,13 @@ class Bootloader extends Phaser.Scene {
         // ============================================================================
         this.load.image('squareBack','Square/back.png');
         this.load.image('square','Square/square.png');
-        for(var i=1; i<=16; i++){
-            this.load.image('pSquare'+i,'Square/p'+i+'.png');
-        }
+        for(var i=1; i<=16; i++){ this.load.image('pSquare'+i,'Square/p'+i+'.png'); }
         // ============================================================================
         // Four Fours Scene
         // ============================================================================
         this.load.image('fourBack','Four/back.jpg');
         this.load.image('ship','Four/ship.png');
-        for(var i=0; i<10; i++){
-            this.load.image('ec'+i,'Four/ec'+i+'.png');
-        }
+        for(var i=0; i<10; i++){ this.load.image('ec'+i,'Four/ec'+i+'.png'); }
         this.load.image('rope','Four/rope.png');
         // ============================================================================
         // Riddle Scene
@@ -289,9 +270,8 @@ class Bootloader extends Phaser.Scene {
         // ============================================================================
         // Iniciar juego
         this.btnPlay.on('pointerover', () => {  this.btnPlay.setScale(1.6); });
-        this.btnPlay.on('pointerout', () => {   this.btnPlay.setScale(1.5); });
-        this.btnPlay.on('pointerup', () => {
-            console.log('Press Play');
+        this.btnPlay.on('pointerout',  () => {   this.btnPlay.setScale(1.5); });
+        this.btnPlay.on('pointerup',   () => {
             this.scene.start('Levels', {
                 personaje: this.character,
                 monedas: this.nCoin,
@@ -300,36 +280,33 @@ class Bootloader extends Phaser.Scene {
         });
         // Abrir seleccion de personajes
         this.btnCar.on('pointerover', () => {   this.btnCar.setScale(1.1);  });
-        this.btnCar.on('pointerout', () => {    this.btnCar.setScale(1);    });
-        this.btnCar.on('pointerup', () => {
-            console.log('Press Car');
+        this.btnCar.on('pointerout',  () => {    this.btnCar.setScale(1);    });
+        this.btnCar.on('pointerup',   () => {
             this.mainContainer.setVisible(false);
             this.characterContainer.setVisible(true);
         });
         // Abrir configuracion
         this.btnConfig.on('pointerover', () => {  this.btnConfig.setScale(1.1);   });
-        this.btnConfig.on('pointerout', () =>  {  this.btnConfig.setScale(1);     });
-        this.btnConfig.on('pointerup', () =>   {  this.optContainer.setVisible(true); }); 
+        this.btnConfig.on('pointerout',  () =>  {  this.btnConfig.setScale(1);     });
+        this.btnConfig.on('pointerup',   () =>   {  this.optContainer.setVisible(true); }); 
         // Instrucciones
         this.txtHow.on('pointerover', () => { this.txtHow.setScale(1.1);  });
-        this.txtHow.on('pointerout', () => {  this.txtHow.setScale(1);  });
-        this.txtHow.on('pointerup', () => {  this.howContainer.setVisible(true);  });
+        this.txtHow.on('pointerout',  () => {  this.txtHow.setScale(1);  });
+        this.txtHow.on('pointerup',   () => {  this.howContainer.setVisible(true);  });
         // ============================================================================
         // Funcion de botones (Pantalla de Personajes)
         // ============================================================================
         // Cerrar Ventana
         this.btnClose.on('pointerover', () => { this.btnClose.setScale(0.6); });
-        this.btnClose.on('pointerout', () => { this.btnClose.setScale(0.5); });
-        this.btnClose.on('pointerup', () => {
-            console.log('Press Close');
+        this.btnClose.on('pointerout',  () => { this.btnClose.setScale(0.5); });
+        this.btnClose.on('pointerup',   () => {
             this.characterContainer.setVisible(false);
             this.mainContainer.setVisible(true);
         });
         // Aceptar/Comprar personaje 
         this.btnAceptChar.on('pointerover', () => { this.btnAceptChar.setScale(1.1); });
-        this.btnAceptChar.on('pointerout', () => { this.btnAceptChar.setScale(1); });
-        this.btnAceptChar.on('pointerup', () => {
-            console.log('Press Accept Character');
+        this.btnAceptChar.on('pointerout',  () => { this.btnAceptChar.setScale(1); });
+        this.btnAceptChar.on('pointerup',   () => {
             if(this.p1Select.visible == true){
                 this.character = 'pirata_1';
             }else if(this.p2Select.visible == true){
@@ -344,8 +321,8 @@ class Bootloader extends Phaser.Scene {
         });
         // Flecha hacía atrás
         this.btnPrev.on('pointerover', () => { this.btnPrev.setScale(1.1); });
-        this.btnPrev.on('pointerout', () => { this.btnPrev.setScale(1); });
-        this.btnPrev.on('pointerup', () => {
+        this.btnPrev.on('pointerout',  () => { this.btnPrev.setScale(1); });
+        this.btnPrev.on('pointerup',   () => {
             if(this.p1Select.visible == true){
                 this.p1Select.setVisible(false);
                 this.p3Select.setVisible(true);
@@ -363,8 +340,8 @@ class Bootloader extends Phaser.Scene {
         });
         // Flecha hacía delante
         this.btnNext.on('pointerover', () => { this.btnNext.setScale(1.1); });
-        this.btnNext.on('pointerout', () => { this.btnNext.setScale(1); });
-        this.btnNext.on('pointerup', () => {
+        this.btnNext.on('pointerout',  () => { this.btnNext.setScale(1); });
+        this.btnNext.on('pointerup',   () => {
             if(this.p1Select.visible == true){
                 this.p1Select.setVisible(false);
                 this.p2Select.setVisible(true);
@@ -385,20 +362,20 @@ class Bootloader extends Phaser.Scene {
         // ============================================================================
         // Cerrar ventana
         this.closeOpt.on('pointerover', () => { this.closeOpt.setScale(1.1); });
-        this.closeOpt.on('pointerout', () => { this.closeOpt.setScale(1); });
-        this.closeOpt.on('pointerup', () => { this.optContainer.setVisible(false); });
+        this.closeOpt.on('pointerout',  () => { this.closeOpt.setScale(1); });
+        this.closeOpt.on('pointerup',   () => { this.optContainer.setVisible(false); });
         // Desactivar música
         this.musicOff.on('pointerover', () => { this.musicOff.setScale(1.6); });
-        this.musicOff.on('pointerout', () => { this.musicOff.setScale(1.5); });
-        this.musicOff.on('pointerup', () => {
+        this.musicOff.on('pointerout',  () => { this.musicOff.setScale(1.5); });
+        this.musicOff.on('pointerup',   () => {
             this.musicOff.setVisible(false);
             this.musicOn.setVisible(true);
             this.musica.stop();
         });
         // Activa música
         this.musicOn.on('pointerover', () => { this.musicOn.setScale(1.6); });
-        this.musicOn.on('pointerout', () => {  this.musicOn.setScale(1.5); });
-        this.musicOn.on('pointerup', () => {
+        this.musicOn.on('pointerout',  () => {  this.musicOn.setScale(1.5); });
+        this.musicOn.on('pointerup',   () => {
             this.musicOff.setVisible(true);
             this.musicOn.setVisible(false);
             this.musica.play();
@@ -408,12 +385,12 @@ class Bootloader extends Phaser.Scene {
         // ============================================================================
         // Cerrar ventana
         this.closeHow.on('pointerover', () => { this.closeHow.setScale(.8); });
-        this.closeHow.on('pointerout', () => { this.closeHow.setScale(.75); });
-        this.closeHow.on('pointerup', () => { this.howContainer.setVisible(false); });
+        this.closeHow.on('pointerout',  () => { this.closeHow.setScale(.75); });
+        this.closeHow.on('pointerup',   () => { this.howContainer.setVisible(false); });
         // Flecha hacía atrás
         this.prevHow.on('pointerover', () => { this.prevHow.setScale(.7); });
-        this.prevHow.on('pointerout', () => { this.prevHow.setScale(.6); });
-        this.prevHow.on('pointerup', () => {
+        this.prevHow.on('pointerout',  () => { this.prevHow.setScale(.6); });
+        this.prevHow.on('pointerup',   () => {
             if(this.inst1.visible == true){
                 this.inst1.setVisible(false);
                 this.inst4.setVisible(true);
@@ -430,8 +407,8 @@ class Bootloader extends Phaser.Scene {
         });
         // Flecha hacía delante
         this.nextHow.on('pointerover', () => { this.nextHow.setScale(.7); });
-        this.nextHow.on('pointerout', () => { this.nextHow.setScale(.6); });
-        this.nextHow.on('pointerup', () => {
+        this.nextHow.on('pointerout',  () => { this.nextHow.setScale(.6); });
+        this.nextHow.on('pointerup',   () => {
             if(this.inst1.visible == true){
                 this.inst1.setVisible(false);
                 this.inst2.setVisible(true);
@@ -451,7 +428,6 @@ class Bootloader extends Phaser.Scene {
     // Función que agrega interpolaciones al personaje mostrado
     // ============================================================================
     characterTweens(){
-        console.log('funcion tweens');
         let a, b, c;
         this.add.tween({
             targets: [this.characterContainer],
@@ -466,11 +442,8 @@ class Bootloader extends Phaser.Scene {
             },
         });
         this.add.tween({
-            targets: [this.coin],
-            loop: -1,
-            onStart: (tween, obj, target) => {
-                obj[0].anims.play('rotate',true);
-            },
+            targets: [this.coin], loop: -1,
+            onStart: (tween, obj, target) => { obj[0].anims.play('rotate',true); },
         });
     }
     // ============================================================================
@@ -520,5 +493,4 @@ class Bootloader extends Phaser.Scene {
     return resp;
     }
 }
-
 export default Bootloader;

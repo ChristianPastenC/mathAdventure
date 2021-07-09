@@ -1,11 +1,6 @@
 class Riddle extends Phaser.Scene {    
-    constructor(){
-        super({
-            key: "Riddle"
-        });
-    }
+    constructor(){ super({ key: "Riddle" }); }
     init(data){
-        console.log('Riddle Scene');
         // ============================================================================
         // Personaje seleccionado como parametro y monedas
         // ============================================================================
@@ -194,9 +189,7 @@ class Riddle extends Phaser.Scene {
         this.closeModal7.on('pointerout',  () => { this.closeModal7.setScale(0.75); });
         this.closeModal7.on('pointerup',   () => { this.container7.setVisible(false); });
     }
-    update(time,delta){
-        this.water.tilePositionX += .75;
-    }
+    update(time,delta){ this.water.tilePositionX += .75; }
     // ============================================================================
     // Genera una interpolación de movimiento donde 
     // el bote cruza con el objeto elegido 
@@ -216,7 +209,6 @@ class Riddle extends Phaser.Scene {
                 if(this.check() == false){
                     this.lose.setVisible(true);
                     this.loseText.setVisible(true);
-                    console.log('perdiste');
                 }
             },
             onComplete: () => {
@@ -256,7 +248,6 @@ class Riddle extends Phaser.Scene {
                 if(this.check() == false){
                     this.lose.setVisible(true);
                     this.loseText.setVisible(true);
-                    console.log('perdiste');
                 }
             },
             onComplete: () => {
@@ -283,7 +274,6 @@ class Riddle extends Phaser.Scene {
     // Elimina el objeto lógico al pasarlo al bote 
     // ============================================================================
     dropItem(object){
-        console.log('into drop function ',object);
         let direct;
         for(var i = 0; i < this.inicio.length; i++){
             if(this.inicio[i] == object){
@@ -297,11 +287,7 @@ class Riddle extends Phaser.Scene {
                 direct = false;
             }
         }
-        if(direct == true){
-            this.inicio[this.idx] = '';
-        }else{
-            this.final[this.idx] = '';
-        }
+        direct ? this.inicio[this.idx] = '' : this.final[this.idx] = '';
     }
     // ============================================================================
     // Mueve los objetos de manera lógica 
@@ -309,13 +295,7 @@ class Riddle extends Phaser.Scene {
     move(object,direct){
         if(object){
             let idx = this.idx;
-            if(direct == true){ 
-                this.final[idx] = object;
-                console.log(this.final);
-            }else{
-                this.inicio[idx] = object;
-                console.log(this.inicio);
-            }
+            direct ? this.final[idx] = object : this.inicio[idx] = object;
             if(this.winner() == true){
                 let auxRect = this.add.rectangle(this.scale.width/2,this.scale.height/2,this.scale.width,this.scale.height,0x000000,.75).setVisible(false);
                 let winTxt  = this.add.text(this.scale.width/2-150,this.scale.height/2,'Ganaste..!',{font: "70px MiTica", fill:"#ffffff"}).setVisible(false);
@@ -347,8 +327,6 @@ class Riddle extends Phaser.Scene {
     // ============================================================================
     check(){
         let resp = true;
-        console.log(this.inicio);
-        console.log(this.final);
         //Zorro con Pollo
         if(this.inicio.includes('') && (this.inicio.includes('pollo')) && (this.inicio.includes('zorro'))){
             resp = false;
@@ -371,12 +349,11 @@ class Riddle extends Phaser.Scene {
     // Verifica si todos los objetos han sido cambiados de lado
     // ============================================================================
     winner(){
-        let resp = false;
-        if( this.final.includes('pollo') &&
+        let resp;
+        this.final.includes('pollo') &&
             this.final.includes('zorro') &&
-            this.final.includes('maiz')){
-                resp = true;
-        }
+            this.final.includes('maiz') ? 
+                resp = true : resp = false;
     return resp;
     }
     // ============================================================================
@@ -384,11 +361,8 @@ class Riddle extends Phaser.Scene {
     // ============================================================================
     authomaticTweens(){
         this.add.tween({
-            targets: [this.coin],
-            loop: -1,
-            onStart: (tween, obj, target) => {
-                obj[0].anims.play('rotate',true);
-            },
+            targets: [this.coin], loop: -1,
+            onStart: (tween, obj, target) => { obj[0].anims.play('rotate',true); },
         });
     }
 }

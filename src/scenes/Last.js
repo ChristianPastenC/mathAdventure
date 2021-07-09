@@ -3,7 +3,6 @@ class Hanoi extends Phaser.Scene {
     constructor(){ super({ key: "Last" }); }
 
     init(data){
-        console.log('Last Scene');
         // ============================================================================
         // Personaje seleccionado como parametro, monedas y tienda
         // ============================================================================
@@ -224,11 +223,8 @@ class Hanoi extends Phaser.Scene {
             },
         });
         this.add.tween({
-            targets: [this.coin],
-            loop: -1,
-            onStart: (tween, obj, target) => {
-                obj[0].anims.play('rotate',true);
-            },
+            targets: [this.coin], loop: -1,
+            onStart: (tween, obj, target) => { obj[0].anims.play('rotate',true); },
         });
     }
     // ============================================================================
@@ -263,7 +259,6 @@ class Hanoi extends Phaser.Scene {
     // Método que verfica las variables 
     // ============================================================================
     checkResult(){
-        console.log(this.A, ' ', this.B, ' ', this.C);
         this.A == 18 && this.B == 12 &&
         this.C == 4 && this.txtRef.text == '36' ?
             this.winner(true) :

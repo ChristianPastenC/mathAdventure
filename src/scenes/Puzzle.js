@@ -1,13 +1,8 @@
 class Puzzle extends Phaser.Scene {
     
-    constructor(){
-        super({
-            key: "Puzzle"
-        });
-    }
+    constructor(){ super({ key: "Puzzle" }); }
 
     init(data){
-        console.log('Puzzle Scene');
         // ============================================================================
         // Personaje seleccionado como parametro
         // ============================================================================
@@ -63,14 +58,9 @@ class Puzzle extends Phaser.Scene {
         // ============================================================================
         const eventos = Phaser.Input.Events;
         
-        this.input.on(eventos.DRAG_START, (pointer, obj, dragX, dragY) => {
-            obj.setScale(0.9);
-        });
+        this.input.on(eventos.DRAG_START, (pointer, obj, dragX, dragY) => { obj.setScale(0.9); });
 
-        this.input.on(eventos.DRAG, (pointer,obj,dragX,dragY)=>{
-            obj.x = dragX;
-            obj.y = dragY;
-        });
+        this.input.on(eventos.DRAG, (pointer,obj,dragX,dragY)=>{ obj.x = dragX; obj.y = dragY; });
         //Función Puzzle
         this.input.on(eventos.DRAG_END,(pointer,obj,dropzone)=>{
             var name = obj.name,
@@ -85,10 +75,7 @@ class Puzzle extends Phaser.Scene {
                 this.black.x = obj.input.dragStartX;
                 this.black.y = obj.input.dragStartY;
                 this.move(name,namebk);
-                if(this.isCompleted()){
-                    console.log('ganas 8 puzzle');
-                    this.win();
-                }
+                if(this.isCompleted()){ this.win(); }
             }else{
                 obj.x = obj.input.dragStartX;
                 obj.y = obj.input.dragStartY;
@@ -96,35 +83,23 @@ class Puzzle extends Phaser.Scene {
             obj.setScale(1.0);
         });
 
-        this.input.on(eventos.DROP,(pointer,obj,dropzone)=>{
-            obj.x = dropzone.x;
-            obj.y = dropzone.y;
-        });
-
+        this.input.on(eventos.DROP,(pointer,obj,dropzone)=>{ obj.x = dropzone.x; obj.y = dropzone.y; });
         // ============================================================================
         // Función de botones
         // ============================================================================
         //Boton de reinicio
-        this.btnRestart.on('pointerover', () => {
-            this.btnRestart.setScale(0.8);
-        });
-        this.btnRestart.on('pointerout', () => {
-            this.btnRestart.setScale(0.7);
-        });
-        this.btnRestart.on('pointerup', () => {
+        this.btnRestart.on('pointerover', () => { this.btnRestart.setScale(0.8); });
+        this.btnRestart.on('pointerout',  () => { this.btnRestart.setScale(0.7); });
+        this.btnRestart.on('pointerup',   () => {
             do{
                 this.clean();
                 this.board();
             }while(this.isSolvable(this.matrix(this.grid)) != true);
         });
         //Boton de salida
-        this.btnExit.on('pointerover', () => {
-            this.btnExit.setScale(0.8);
-        });
-        this.btnExit.on('pointerout', () => {
-            this.btnExit.setScale(0.7);
-        });
-        this.btnExit.on('pointerup', () => {
+        this.btnExit.on('pointerover', () => { this.btnExit.setScale(0.8); });
+        this.btnExit.on('pointerout',  () => { this.btnExit.setScale(0.7); });
+        this.btnExit.on('pointerup',   () => {
             this.scene.start('Levels', {
                 personaje: this.personajeAct,
                 monedas: this.nCoin,
@@ -132,36 +107,20 @@ class Puzzle extends Phaser.Scene {
             });
         });
         //Boton de ayuda
-        this.btnInfo.on('pointerover', () => {
-            this.btnInfo.setScale(0.8);
-        });
-        this.btnInfo.on('pointerout', () => {
-            this.btnInfo.setScale(0.7);
-        });
-        this.btnInfo.on('pointerup', () => {
-            this.container1.setVisible(true);
-        });
+        this.btnInfo.on('pointerover', () => { this.btnInfo.setScale(0.8); });
+        this.btnInfo.on('pointerout',  () => { this.btnInfo.setScale(0.7); });
+        this.btnInfo.on('pointerup',   () => { this.container1.setVisible(true); });
         //Boton que cierra el modal
-        this.closeModal1.on('pointerover', () => {
-            this.closeModal1.setScale(0.8);
-        });
-        this.closeModal1.on('pointerout', () => {
-            this.closeModal1.setScale(0.75);
-        });
-        this.closeModal1.on('pointerup', () => {
-            this.container1.setVisible(false);
-        });
-    }
-    update(time, delta){
-    
+        this.closeModal1.on('pointerover', () => { this.closeModal1.setScale(0.80); });
+        this.closeModal1.on('pointerout',  () => { this.closeModal1.setScale(0.75); });
+        this.closeModal1.on('pointerup',   () => { this.container1.setVisible(false); });
     }
     // ============================================================================
     // Función que agrega interpolaciones al personaje mostrado
     // ============================================================================
     authomaticTweens(){
         this.add.tween({
-            targets: [this.personaje],
-            loop: -1,
+            targets: [this.personaje], loop: -1,
             onStart: (tween, obj, target) => {
                 if(this.personajeAct == 'pirata_1'){
                     obj[0].anims.play('idle', true);
@@ -173,20 +132,15 @@ class Puzzle extends Phaser.Scene {
             },
         });
         this.add.tween({
-            targets: [this.coin],
-            loop: -1,
-            onStart: (tween, obj, target) => {
-                obj[0].anims.play('rotate',true);
-            },
+            targets: [this.coin], loop: -1,
+            onStart: (tween, obj, target) => { obj[0].anims.play('rotate',true); },
         });
     }
     // ============================================================================
     // Posiciona de manera aleatoria las piezas en la interfaz
     // ============================================================================
     board(){
-        for(var i = 0; i<9; i++){
-            this.grid[i] = i;
-        }
+        for(var i = 0; i<9; i++){ this.grid[i] = i; }
         var posX = 225, posY = 50;
         this.grid.sort(function() { return Math.random() - 0.1})
         for(var i=0;i<this.grid.length;i++){
@@ -204,10 +158,7 @@ class Puzzle extends Phaser.Scene {
                 this.pieces[i] = this.black;
             }
             posX += 200;
-            if((i+1)%3 == 0){
-                posY += 100;
-                posX = 225;
-            }   
+            if((i+1)%3 == 0){ posY += 100; posX = 225; }   
         }
     }
     // ============================================================================
@@ -216,10 +167,8 @@ class Puzzle extends Phaser.Scene {
     move(init,end){
         var a, b;
         for(var i=0; i<9; i++){
-            if(init == this.grid[i])
-                a = i;
-            if(end == this.grid[i])
-                b = i;
+            init == this.grid[i] ? a = i : a = -1;
+            end  == this.grid[i] ? b = i : b = -1;
         }
         this.grid[a] = end;
         this.grid[b] = init;
@@ -230,12 +179,8 @@ class Puzzle extends Phaser.Scene {
     isCompleted(){
         var complete = true;
         for(var i = 0; i < 9; i++){
-            if(this.grid[i] != (i+1)){
-                complete = false;
-                break;
-            }else{
-                continue;
-            }
+            if(this.grid[i] != (i+1)){ complete = false; break; }
+                else{ continue; }
         }
         return complete;
     }
@@ -243,19 +188,13 @@ class Puzzle extends Phaser.Scene {
     // Función auxiliar que convierte un array en matriz de 3x3
     // ============================================================================
     matrix(initArray){
-        console.log(initArray);
         let arr = new Array(3);
-        for(let i = 0; i < arr.length; i++){
-            arr[i] = new Array(3);
-        }
+        for(let i = 0; i < arr.length; i++){ arr[i] = new Array(3); }
         for(let i = 0; i < initArray.length; i++){
-            if(initArray[i] == 9){
-                arr[Math.trunc(i/3)][Math.trunc(i%3)] = 0;     
-            }else{
-                arr[Math.trunc(i/3)][Math.trunc(i%3)] = initArray[i]; 
-            }
+            initArray[i] == 9 ? 
+                arr[Math.trunc(i/3)][Math.trunc(i%3)] = 0 :
+                    arr[Math.trunc(i/3)][Math.trunc(i%3)] = initArray[i]; 
         }
-        console.log('as matrix',arr);
     return arr;
     }
     // ============================================================================
@@ -263,14 +202,11 @@ class Puzzle extends Phaser.Scene {
     // ============================================================================
     getInvCount(arr)
     {
-        console.log(arr);
         let inv_count = 0 ;
         for(let i=0;i<2;i++){
             for(let j=i+1;j<3;j++){
                 // Valor de 0 para el espacio vacío
-                if (arr[j][i] > 0 && arr[j][i] > arr[i][j]){
-                    inv_count += 1;
-                }
+                if (arr[j][i] > 0 && arr[j][i] > arr[i][j]){ inv_count += 1; }
             }
         }
     return inv_count;
@@ -291,9 +227,7 @@ class Puzzle extends Phaser.Scene {
     // ============================================================================
     clean(){
         if(this.pieces.length != 0){
-            for(var i=0; i<9;i++){
-                this.pieces[i].destroy();
-            }
+            for(var i=0; i<9;i++){ this.pieces[i].destroy(); }
         }
     }
     // ============================================================================
@@ -323,5 +257,4 @@ class Puzzle extends Phaser.Scene {
         });
     }
 }
-
 export default Puzzle;
