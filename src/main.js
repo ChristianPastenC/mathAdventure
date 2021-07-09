@@ -6,6 +6,7 @@ import Maze from './scenes/Maze.js'
 import Square from './scenes/Square.js'
 import Four from './scenes/Four.js'
 import Riddle from './scenes/Riddle.js'
+import Last from './scenes/Last.js'
 import SliderPlugin from '../node_modules/phaser3-rex-plugins/plugins/slider-plugin.js'
 
 const config = {
@@ -40,10 +41,10 @@ const config = {
     audio: {
         disableWebAudio: true
     },
-    scene: [ Bootloader,
-             Levels, 
+    scene: [ Bootloader, Levels, 
              Hanoi, Puzzle, Maze,
              Square, Four, Riddle,
+             Last,
            ]
 };
 const game = new Phaser.Game(config);

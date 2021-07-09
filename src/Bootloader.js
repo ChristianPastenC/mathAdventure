@@ -194,6 +194,11 @@ class Bootloader extends Phaser.Scene {
         this.load.image('dropRiddle','Riddle/drop.png');
         this.load.image('dropRiddleH','Riddle/dropH.png');
         this.load.image('waterRiddle','Riddle/water.png');
+        // ============================================================================
+        // Last Scene
+        // ============================================================================
+        this.load.image('lastBack', 'Last/back.png');
+        this.load.image('lastSky', 'Last/sky.png');
     }
 
     create(){
@@ -287,7 +292,7 @@ class Bootloader extends Phaser.Scene {
         this.btnPlay.on('pointerout', () => {   this.btnPlay.setScale(1.5); });
         this.btnPlay.on('pointerup', () => {
             console.log('Press Play');
-            this.scene.start('Levels', {
+            this.scene.start('Last', {
                 personaje: this.character,
                 monedas: this.nCoin,
                 comprados: this.store,
