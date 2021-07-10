@@ -5,7 +5,7 @@ class Bootloader extends Phaser.Scene {
         this.nCoin = data.monedas;
         this.store = data.comprados;
         if(!this.character){    this.character = 'pirata_1'; }
-        if(!this.nCoin)    {    this.nCoin = 18;             }
+        if(!this.nCoin)    {    this.nCoin = 0;             }
         if(!this.store)    {    this.store = [false,false];  } 
     }
     preloadBar() {
@@ -22,7 +22,7 @@ class Bootloader extends Phaser.Scene {
             y: height / 2 - 35,
             text: 'Cargando ...',
             style: {
-                font: '30px MiTica',
+                font: '35px MiTica',
                 fill: '#ffffff'
             }
         });
@@ -33,7 +33,7 @@ class Bootloader extends Phaser.Scene {
             y: (height / 2) + 5,
             text: '0%',
             style: {
-                font: '18px MiTica',
+                font: '25px MiTica',
                 fill: '#ffffff'
             }
         });
