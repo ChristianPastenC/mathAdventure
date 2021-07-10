@@ -167,8 +167,8 @@ class Puzzle extends Phaser.Scene {
     move(init,end){
         var a, b;
         for(var i=0; i<9; i++){
-            init == this.grid[i] ? a = i : a = -1;
-            end  == this.grid[i] ? b = i : b = -1;
+            init == this.grid[i] ? a = i : a = a;
+            end  == this.grid[i] ? b = i : b = b;
         }
         this.grid[a] = end;
         this.grid[b] = init;
